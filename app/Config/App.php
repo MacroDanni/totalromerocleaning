@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'https://todoromeroscleaning.herokuapp.com/';
+    public $baseURL = 'http://todoromerocleaning.test/';
 
     /**  ADD
      * --------------------------------------------------------------------------
@@ -175,7 +175,7 @@ class App extends BaseConfig
      *
      * @var int
      */
-    public $sessionExpiration = 7200;
+    public $sessionExpiration = 3600;
 
     /**
      * --------------------------------------------------------------------------

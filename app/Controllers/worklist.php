@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
-class worklist extends BaseController
+class Worklist extends BaseController
 {
     public function worklist()
     {
+
+
+
+       
         return view('worklist/work');
     }
 }
+
