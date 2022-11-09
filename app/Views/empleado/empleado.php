@@ -24,9 +24,16 @@ Registros
 
 <?= $this->section('content') ?>
 
-<a href="<?= base_url('altaEmpleado') ?>" type="button" class="btn btn-outline-success">Alta Empleado</a>
+<a href="<?= base_url('altaempleado') ?>" type="button" class="btn btn-outline-success">Alta Empleado</a>
 
  
+
+<?php if ($flag = session()->getFlashdata('flag')) {  ?>
+        <div class="alert alert-<?= $flag['type']; ?>" role="alert">
+            <strong><?= $flag['msg']; ?></strong>
+        </div>
+        <?php } ?>
+
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -51,7 +58,8 @@ Registros
                     <td><?=$empleado['fechaIngreso'] ?></td>
                     <td><?=$empleado['tipo'] ?></td>
                     <td>
-                            <button type="button" class="btn btn-outline-warning">Editar</button>
+                    <a href="<?= base_url('editarEmpleado/'.$empleado['id']); ?>" class="btn btn-outline-warning">Editar</a>
+                 
                     </td>
                     </tr>
                 <?php endforeach ?>
@@ -59,8 +67,5 @@ Registros
             </tbody>
                 
         </table>
-
-
-
 
 <?= $this->endSection() ?>

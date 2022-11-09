@@ -38,11 +38,14 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('worklist', 'worklist::worklist');
 $routes->get('calendar', 'calendar::calendar');
-$routes->get('empleado', 'empleado::empleado');
-$routes->get('altaEmpleado', 'empleado::altaEmpleado');
+$routes->get('empleado', 'empleado::empleado'); 
+$routes->post('guardarEditar', 'empleado::guardareditar');
+$routes->post('guardarEmpleado', 'empleado::guardarEmpleado');
+$routes->get('editarEmpleado/(:num)', 'empleado::editarEmpleado/$1');
+$routes->get('altaempleado', 'empleado::altaempleado');
 
 /*
- * --------------------------------------------------------------------
+  * --------------------------------------------------------------------
  * Additional Routing
  * --------------------------------------------------------------------
  *
