@@ -17,7 +17,7 @@ class Job extends BaseController
         }
         else{ 
 
-        $data['job']= $WorklistModel->where('nameEmployee', $session->get('nikename'))->orderBy('fechaAseo', 'ASC')->findAll();
+        $data['job']= $WorklistModel->where('nameEmployee', $session->get('nickename'))->orderBy('fechaAseo', 'ASC')->findAll();
      
         return view('job/job',$data);
 
@@ -60,16 +60,28 @@ class Job extends BaseController
 
         public function cleanedup($id){
             $WorklistModel = new \App\Models\WorklistModel();
-            $datos=[
-                'status' => "3",
-                'dateinprocesscleaning' => date('Y-m-d H:i:s'),
-            ];
-
-            $WorklistModel = new \App\Models\WorklistModel();
+   
             $data['cleanedup']= $WorklistModel->where('id', $id)->first();
           
             return view('job/cleanedup',$data);
         }
+
+        public function jobfinished($id){
+           
+            $session = \Config\Services::session();
+            $WorklistModel = new \App\Models\WorklistModel();
+            $datos=[
+                'status' => "3",
+                'datejobfinished' => date('Y-m-d H:i:s'),
+            ];
+            $resultado=$WorklistModel->update($id,$datos);
+            $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Job Finished, Thanks '.$session->get('nickname')]);
+          
+
+            return redirect()->to('job');
+       
+        }
+
 
 
 

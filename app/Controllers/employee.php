@@ -8,10 +8,10 @@ class employee extends BaseController
     public function employee()
     {
         $EmployeeModel = new \App\Models\EmployeeModel();
+
+
         $data['employee'] = $EmployeeModel->orderBy('fechaIngreso', 'DESC')->findAll();
-
-       
-
+     
         return view('employee/employee', $data);
     }
 
@@ -20,12 +20,12 @@ class employee extends BaseController
 
         if ($this->request->getMethod() == 'post') {
             $EmployeeModel = new \App\Models\EmployeeModel();
-            $nikename=substr(ucfirst($this->request->getPost('nombre')),0,1).substr(ucfirst($this->request->getPost('apellidoPaterno')),0,1).ucfirst($this->request->getPost('apellidoMaterno'));
+            $nickename=substr(ucfirst($this->request->getPost('nombre')),0,1).substr(ucfirst($this->request->getPost('apellidoPaterno')),0,1).ucfirst($this->request->getPost('apellidoMaterno'));
         
 
             $datos = [
                 'nombre' => ucfirst($this->request->getPost('nombre')),
-                'nikename' => $nikename,
+                'nickename' => $nickename,
                 'apellidoPaterno' => ucfirst($this->request->getPost('apellidoPaterno')),
                 'apellidoMaterno' => ucfirst($this->request->getPost('apellidoMaterno')),
                 'fechanacimiento' => $this->request->getPost('fechanacimiento'),

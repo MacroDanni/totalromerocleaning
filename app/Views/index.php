@@ -38,7 +38,7 @@
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="session" method="post"   ?>
+      <form action="session" method="post" ?>
       <?= csrf_field()?> 
 
         <div class="input-group mb-3">
@@ -63,6 +63,7 @@
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            
           </div>
           <!-- /.col -->
         </div>

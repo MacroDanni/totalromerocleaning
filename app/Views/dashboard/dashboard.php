@@ -1,11 +1,12 @@
+<?php  $session = \Config\Services::session(); ?>
 <?=$this->extend('templates/main') ?>
-<?php $session = \Config\Services::session(); ?>
+
 <?= $this->section('nombreEmpresa') ?>
 Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-Welcome: <?= $session->nikename ?>
+<?= $session->nickename ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>

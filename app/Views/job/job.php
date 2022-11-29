@@ -6,7 +6,7 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-<?= $session->nikename ?>
+<?= $session->nickename ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
@@ -27,6 +27,9 @@ Jobs List
 
 
 <?= $this->section('content') ?>
+
+
+
 <?php if ($flag = session()->getFlashdata('flag')) {  ?>
         <div class="alert alert-<?= $flag['type']; ?>" id="liveToast" role="alert">
             <h6> <?= $flag['msg']; ?></h6>
@@ -60,12 +63,12 @@ Jobs List
                     <td> <?= $job['nameservice'] ?> </td>
              
                     <td><?php 
-                    if($job['status']==0){ echo 'On hold';}elseif($job['status']==1){ echo 'Employee accepts';}elseif($job['status']==2){ echo 'In process';} elseif($job['status']==3){echo 'cleaning finished';}elseif($job['status']==4){echo 'Cleansed';}elseif($job['status']==4){echo 'Employee rejection';} else{echo 'error';};
+                    if($job['status']==0){ echo 'On hold';}elseif($job['status']==1){ echo 'Employee accepts';}elseif($job['status']==2){ echo 'In process';} elseif($job['status']==3){echo 'Job Finished';}elseif($job['status']==4){echo 'Employee rejection';} else{echo 'error';};
                     ?></td>
                     <td>
                   
                     
-                    <a href="<?php if($job['status']==0  ){ echo base_url('acceptjob/'.$job['id']); }elseif($job['status']==1){ echo base_url('startjob/'.$job['id']);}elseif($job['status']==2){ echo base_url('cleaningfinished/'.$job['id']);}  ?>" class="btn btn-outline-success"><?php if($job['status']==0  ){echo "Accept Job"; }elseif($job['status']==1){ echo "Start Cleaning";}elseif($job['status']==2){ echo "Cleaning Finished";}  ?></a>
+                    <a href="<?php if($job['status']==0){ echo base_url('acceptjob/'.$job['id']); }elseif($job['status']==1){ echo base_url('startjob/'.$job['id']);}elseif($job['status']==2){ echo base_url('cleaningfinished/'.$job['id']);}  ?>" class="btn btn-outline-success"><?php if($job['status']==0  ){echo "Accept Job"; }elseif($job['status']==1){ echo "Start Cleaning";}elseif($job['status']==2){ echo "Job Finished";}elseif($job['status']==3){ echo "Job ok";}  ?></a>
                     </td>
                 </tr>
                 <?php endforeach ?>

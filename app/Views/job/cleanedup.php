@@ -6,7 +6,7 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-<?= $session->nikename ?>
+<?= $session->nickename ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
@@ -14,7 +14,7 @@ Portal Cleaned Up
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-Form
+Job Finished 
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
@@ -24,16 +24,32 @@ Form
 
 <?= $this->section('content') ?>
 
-<form method="POST" action="<?=  isset($empleado) ? base_url('guardarEditar') :  base_url('guardaremployee')  ?>">
 
-<?= csrf_field()  ?> 
 
+ <?= csrf_field()  ?> 
+
+<?php 
+  date_default_timezone_set('America/Chicago');
+  $fecha_i = $cleanedup['dateinprocesscleaning'];
+  $fecha_f= date("Y/m/d H:i:s");
+  $minutos = ((strtotime($fecha_i)-strtotime($fecha_f))/60);
+  $minutos = abs($minutos); 
+  $minutos = floor($minutos);
+?>
 
 
                 <div class="card-body">
+           
+                <?php if($minutos>=180){?>
+                <div class="d-grid gap-2 col-6 mx-auto"> 
+                    
+                    <a href="<?= base_url('jobfinished/'.$cleanedup['id']) ?>" type="button" class="btn btn-outline-success">Job finiched</a>
+                </div>
                 <HR></HR>
+                <?php } ?>
+
                 Cleaning Details:
-                               <HR></HR>
+                 <HR></HR>
                 <div class="row">
 
                     <div class="form-group col-sm-4" >
@@ -44,9 +60,8 @@ Form
                     </div>
 
                   <div class="form-group col-sm-4" >
-                    <label >Nike name</label>
-                    <input type="hidden" name="id" value="<?= $cleanedup['id'] ?>">
-                    <input type="text" class="form-control" id="nikename" name="nikename" 
+                    <label >Nicke name</label>
+                    <input type="text" class="form-control" id="nickename" name="nickename" 
                     value="<?= $cleanedup['nameEmployee'] ?>"disabled>
                   </div>
                   
@@ -57,7 +72,7 @@ Form
                   </div>
 
                   </div>
-<div class="row">
+              <div class="row">
                   <div class="form-group col-sm-4" >
                     <label >Service</label>
                     <input type="text" class="form-control" id="nameservice" name="nameservice" 
@@ -90,15 +105,14 @@ Form
                  
                  
                   <div class="form-group col-sm-3" >
-                    <label >Cleaned</label>
+                    <label >Job Finished</label>
                     <input type="text" class="form-control" id="cleaned" name="cleaned" 
                     value="<?=  date('Y-m-d H:i:s');?>"disabled>
                   </div>
                   
-                  </div>
+              </div>
 
 
-</form>
 
 
 <?= $this->endSection() ?>           

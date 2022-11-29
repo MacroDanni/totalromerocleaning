@@ -64,6 +64,7 @@ $routes->get('logout', 'Session::logout');
 $routes->get('acceptjob/(:num)', 'job::acceptjob/$1');
 $routes->get('cleaningfinished/(:num)', 'job::cleanedup/$1');
 $routes->get('startjob/(:num)', 'job::startclean/$1');
+$routes->get('jobfinished/(:num)', 'job::jobfinished/$1');
 
 /*
   * --------------------------------------------------------------------

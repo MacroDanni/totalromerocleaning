@@ -1,3 +1,4 @@
+<?php  $session = \Config\Services::session(); ?>
 <?=$this->extend('templates/main') ?>
 
 <?= $this->section('nombreEmpresa') ?>
@@ -5,7 +6,7 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-Giovanna Romero Armenta
+<?= $session->nickename ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
@@ -60,7 +61,7 @@ Events  -- <?=  date('l jS \of F Y H:i:s');?>
                   
                   <td><?=$worklist['nameservice'] ?></td>
                     <td><?php 
-                    if($worklist['status']==0){ echo 'On hold';}elseif($worklist['status']==1){ echo 'Employee accepts';}elseif($worklist['status']==2){ echo 'In process';} elseif($worklist['status']==3){echo 'cleaning finished';}elseif($worklist['status']==4){echo 'Cleansed';}elseif($worklist['status']==4){echo 'Employee rejection';} else{echo 'error';};
+                    if($worklist['status']==0){ echo 'On hold';}elseif($worklist['status']==1){ echo 'Employee accepts';}elseif($worklist['status']==2){ echo 'In process';} elseif($worklist['status']==3){echo 'Job finished';}elseif($worklist['status']==4){echo 'Cleansed';}elseif($worklist['status']==4){echo 'Employee rejection';} else{echo 'error';};
                     ?></td>
                     
                     <td>

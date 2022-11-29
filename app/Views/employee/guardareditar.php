@@ -1,3 +1,4 @@
+<?php  $session = \Config\Services::session(); ?>
 <?=$this->extend('templates/main') ?>
 
 <?= $this->section('nombreEmpresa') ?>
@@ -5,7 +6,7 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-Giovanna Romero Armenta 
+<?= $session->nickename ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>

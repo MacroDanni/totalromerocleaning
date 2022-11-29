@@ -17,7 +17,7 @@ class Session extends BaseController
 
         $password=$this->request->getPost('password');
          $query  =$EmployeeModel->where('correoelectronico', $email)->first();
-          
+         
         if($query){
             $pass = $query['contrasena'];
 
@@ -25,7 +25,7 @@ class Session extends BaseController
                 $WorklistModel = new \App\Models\WorklistModel();
                 $session_data = [
                     'id' => $query['id'],
-                    'nikename' => $query['nikename'],
+                    'nickename' => $query['nickename'],
                     'name' => $query['nombre'],
                     'apellidoPaterno' => $query['apellidoPaterno'],
                     'apellidoMaterno' => $query['apellidoMaterno'],

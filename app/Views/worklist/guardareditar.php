@@ -1,3 +1,4 @@
+<?php  $session = \Config\Services::session(); ?>
 <?=$this->extend('templates/main') ?>
 
 <?= $this->section('nombreEmpresa') ?>
@@ -5,7 +6,7 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-Giovanna Romero Armenta 
+<?= $session->nickename ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
@@ -55,7 +56,7 @@ Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
   <option selected>Select Employee</option>
  <?php if ($employee) :?>
                 <?php foreach($employee as $employee): ?>
-                  <option value="<?= $employee['nikename'] ?>"> <?=$employee['nombre'].' '.$employee['apellidoPaterno'].' '.$employee['apellidoMaterno'] ?></option>
+                  <option value="<?= $employee['nickename'] ?>"> <?=$employee['nombre'].' '.$employee['apellidoPaterno'].' '.$employee['apellidoMaterno'] ?></option>
                 <?php endforeach ?>
                 <?php endif ?>
 </select>
