@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-class EmpleadoModel extends Model
+class EmployeeModel extends Model
 {
 	
-	protected $table='empleado';
+	protected $table='employee';
 	protected $primaryKey='id';
-	protected $allowedFields=['nombre','apellidoPaterno','apellidoMaterno','edad','telefono','foto','correoElectronico','contrasena','fechaIngreso','tipo','estatus','eliminarEstatus'];
+	protected $allowedFields=['nombre','apellidoPaterno','apellidoMaterno','fechanacimiento','telefono','foto','correoElectronico','contrasena','fechaIngreso','tipo','estatus','eliminarEstatus','nikename'];
 //	protected $allowedFields=['nombre','apellidoPaterno','apellidoMaterno','edad','telefono','foto','correoElectronico','contrasena','fechaIngreso','tipo','estatus','eliminarEstatus'];
 }
  

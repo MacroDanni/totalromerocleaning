@@ -3,29 +3,32 @@
 namespace App\Controllers;
 use App\Controllers\BaseController;
 
-class Empleado extends BaseController
+class employee extends BaseController
 {
-    public function empleado()
+    public function employee()
     {
-        $EmpleadoModel = new \App\Models\EmpleadoModel();
-        $data['empleado'] = $EmpleadoModel->orderBy('fechaIngreso', 'DESC')->findAll();
+        $EmployeeModel = new \App\Models\EmployeeModel();
+        $data['employee'] = $EmployeeModel->orderBy('fechaIngreso', 'DESC')->findAll();
 
        
 
-        return view('empleado/empleado', $data);
+        return view('employee/employee', $data);
     }
 
 
-    public function guardarEmpleado(){
+    public function guardaremployee(){
 
         if ($this->request->getMethod() == 'post') {
-            $EmpleadoModel = new \App\Models\EmpleadoModel();
+            $EmployeeModel = new \App\Models\EmployeeModel();
+            $nikename=substr(ucfirst($this->request->getPost('nombre')),0,1).substr(ucfirst($this->request->getPost('apellidoPaterno')),0,1).ucfirst($this->request->getPost('apellidoMaterno'));
+        
 
             $datos = [
-                'nombre' => $this->request->getPost('nombre'),
-                'apellidoPaterno' => $this->request->getPost('apellidoPaterno'),
-                'apellidoMaterno' => $this->request->getPost('apellidoMaterno'),
-                'edad' => $this->request->getPost('edad'),
+                'nombre' => ucfirst($this->request->getPost('nombre')),
+                'nikename' => $nikename,
+                'apellidoPaterno' => ucfirst($this->request->getPost('apellidoPaterno')),
+                'apellidoMaterno' => ucfirst($this->request->getPost('apellidoMaterno')),
+                'fechanacimiento' => $this->request->getPost('fechanacimiento'),
                 'telefono' => $this->request->getPost('telefono'),
                 'foto' => $this->request->getPost('foto'),
                 'correoElectronico' => $this->request->getPost('correoElectronico'),
@@ -34,7 +37,7 @@ class Empleado extends BaseController
                 'estatus' => $this->request->getPost('estatus'),
             ];
 
-            $resultado = $EmpleadoModel->insert($datos);
+            $resultado = $EmployeeModel->insert($datos);
 
           
             $to="todoromeroscleaning@gmail.com";
@@ -43,34 +46,34 @@ class Empleado extends BaseController
 
              mail($to,$subject,$message);
 
-            $data['empleado'] = $EmpleadoModel->orderBy('fechaIngreso', 'DESC')->findAll();
+            $data['employee'] = $EmployeeModel->orderBy('fechaIngreso', 'DESC')->findAll();
             $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => $this->request->getVar('nombre') . ' ' . 'Se registro correctamente']);
 
-            return view('empleado/empleado',$data);
+            //return view('employee/employee',$data);
         } 
   
         else{
-            return view('empleado/empleado');
+            return view('employee/employee');
             
         }
        
 
     }
 
-    public function editarEmpleado($id)
+    public function editaremployee($id)
     {
 
-        $EmpleadoModel = new \App\Models\EmpleadoModel();
-        $data['empleado'] = $EmpleadoModel->where('id', $id)->first();
+        $EmployeeModel = new \App\Models\EmployeeModel();
+        $data['employee'] = $EmployeeModel->where('id', $id)->first();
 
-      return view('empleado/guardareditar', $data);
+      return view('employee/guardareditar', $data);
 
     }
 
         
-    public function altaempleado(){
+    public function altaemployee(){
 
-        return view('empleado/guardareditar');
+        return view('employee/guardareditar');
 
     }
 
@@ -80,7 +83,7 @@ class Empleado extends BaseController
 
 
         $db      = \Config\Database::connect();
-        $EmpleadoModel = new \App\Models\EmpleadoModel();
+        $EmployeeModel = new \App\Models\EmployeeModel();
         $id=$this->request->getPost('id');
 
            //Actualizamos en  tabla clientes
@@ -88,28 +91,30 @@ class Empleado extends BaseController
            'nombre'=>  $this->request->getPost('nombre'),
            'apellidoPaterno'=>  $this->request->getPost('apellidoPaterno'),
            'apellidoMaterno'=>  $this->request->getPost('apellidoMaterno'),
-           'edad'=>  $this->request->getPost('edad'),
+           'fechanacimiento'=>  $this->request->getPost('fechanacimiento'),
            'telefono'=>  $this->request->getPost('telefono'),
            'correoElectronico'=>  $this->request->getPost('correoElectronico'),
            'foto'=>  $this->request->getPost('foto'),
            'tipo'=>  $this->request->getPost('tipo'),
            'estatus'=>  $this->request->getPost('estatus'),
            ];
-           $resultado=$EmpleadoModel->update($id, $datos);
+           $resultado=$EmployeeModel->update($id, $datos);
          print($resultado);
 
            if ($resultado > 0) {
             $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Se a guardado satisfactoriamente '.$id.$this->request->getVar('nombre').'!']);
-            return redirect()->to('empleado');
+            return redirect()->to('employee');
         } else {
             $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'fail'.$this->request->getVar('nombre').'!']);
         
-            return redirect()->to('empleado');
+            return redirect()->to('employee');
         }
        
-       // return view('empleado/guardareditar');
+       // return view('employee/guardareditar');
 
     }
+
+
 
 
     

@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://todoromerocleaning.test/';
+    public $baseURL = 'http://totalromerocleaning.test/';
 
     /**  ADD
      * --------------------------------------------------------------------------

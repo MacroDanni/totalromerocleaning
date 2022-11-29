@@ -72,7 +72,7 @@ class Security extends BaseConfig
      *
      * @var int
      */
-    public $expires = 7200;
+    public $expires = 600;
 
     /**
      * --------------------------------------------------------------------------

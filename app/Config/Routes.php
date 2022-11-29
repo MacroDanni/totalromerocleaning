@@ -36,13 +36,34 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('dashboard', 'dashboard::dashboard');
 $routes->get('worklist', 'worklist::worklist');
 $routes->get('calendar', 'calendar::calendar');
-$routes->get('empleado', 'empleado::empleado'); 
-$routes->post('guardarEditar', 'empleado::guardareditar');
-$routes->post('guardarEmpleado', 'empleado::guardarEmpleado');
-$routes->get('editarEmpleado/(:num)', 'empleado::editarEmpleado/$1');
-$routes->get('altaempleado', 'empleado::altaempleado');
+$routes->get('employee', 'employee::employee'); 
+$routes->post('guardarEditar', 'employee::guardareditar');
+$routes->post('guardaremployee', 'employee::guardaremployee');
+$routes->get('editaremployee/(:num)', 'employee::editaremployee/$1');
+$routes->get('altaemployee', 'employee::altaemployee');
+$routes->get('guardareditar', 'worklist::guardareditar');
+
+$routes->get('building', 'building::building');
+$routes->get('newBuilding', 'building::guardareditar');
+$routes->post('savebuilding', 'building::savebuilding');
+
+
+$routes->post('saveWorklist', 'worklist::saveWorklist');
+
+$routes->post('session', 'Session::session');
+
+$routes->get('contact', 'contact::contact');
+$routes->get('job', 'job::job');
+
+$routes->get('logout', 'Session::logout');
+
+
+$routes->get('acceptjob/(:num)', 'job::acceptjob/$1');
+$routes->get('cleaningfinished/(:num)', 'job::cleanedup/$1');
+$routes->get('startjob/(:num)', 'job::startclean/$1');
 
 /*
   * --------------------------------------------------------------------

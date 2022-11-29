@@ -1,7 +1,7 @@
 <?=$this->extend('templates/main') ?>
 
 <?= $this->section('nombreEmpresa') ?>
-Todo Romeros Cleaning
+Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
@@ -9,7 +9,7 @@ Giovanna Romero Armenta
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
-Portal Alta Empleado
+Portal Alta Empleado  -- <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
@@ -22,7 +22,7 @@ Portal Alta Empleado
 
 <?= $this->section('content') ?>
 
-<form method="POST" action="<?=  isset($empleado) ? base_url('guardarEditar') :  base_url('guardarEmpleado')  ?>">
+<form method="POST" action="<?=  isset($empleado) ? base_url('guardarEditar') :  base_url('guardaremployee')  ?>">
 
 <?= csrf_field()  ?> 
                 <div class="card-body">
@@ -57,9 +57,9 @@ Portal Alta Empleado
                   </div>
 
                   <div class="form-group col-sm-4" >
-                    <label >Edad</label>
-                    <input type="text" class="form-control" id="edad" name="edad" placeholder="Ingresa Edad"
-                    value="<?php echo isset($empleado) ? $empleado['edad'] : (isset($_POST['edad']) ? $_POST['edad'] :'' ); ?>">
+                    <label >Fecha Nacimiento</label>
+                    <input type="date" class="form-control" id="fechanacimiento" name="fechanacimiento"
+                    value="<?php echo isset($empleado) ? $empleado['fechanacimiento'] : (isset($_POST['fechanacimiento']) ? $_POST['fechanacimiento'] :'' ); ?>">
                   </div>
 
                   <div class="form-group col-sm-4">

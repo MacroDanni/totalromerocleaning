@@ -1,7 +1,7 @@
 <?=$this->extend('templates/main') ?>
 
 <?= $this->section('nombreEmpresa') ?>
-Todo Romeros Cleaning
+Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
@@ -17,7 +17,7 @@ Calendar
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
-Events
+Events  -- <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 
 

@@ -1,11 +1,11 @@
 <?=$this->extend('templates/main') ?>
 
 <?= $this->section('nombreEmpresa') ?>
-Todo Romeros Cleaning
+Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-Giovanna Romero Armenta 
+Giovanna Romero Armenta
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
@@ -17,158 +17,59 @@ Work List
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
-Events
+Events  -- <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
-
-
 <?= $this->section('content') ?>
-<div class="card">
-              
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+
+<a href="<?= base_url('guardareditar') ?>" type="button" class="btn btn-outline-success">New Work</a>
+
+<div class="card-body"> 
+<?php if ($flag = session()->getFlashdata('flag')) {  ?>
+        <div class="alert alert-<?= $flag['type']; ?>" role="alert">
+            <strong><?= $flag['msg']; ?></strong>
+        </div>
+        <?php } ?>
+        
+                <table id="example1" class="table table-hover">
                   <thead>
                   <tr>
                     <th>#</th>
                     <th>Building</th>
-                    <th># Departament</th>
+                    <th># Rooms</th>
                     <th>Date</th>
                     <th>Assigned to</th>
+                    <th>Service</th>
                     <th>Status</th>
+                    <th></th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Tower 17</td>
-                    <td>20</td>
-                    <td>03-11-2022</td>
-                    <td>Giovana Romero Armenta</td>
-                    <td>on process</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Tower 2
+                  <?php if ($worklist) :?>
+                <?php foreach($worklist as $worklist): ?>
+                <tr>                    
+                    <td><?=$worklist['id'] ?></td>
+                    <td><?=$worklist['nameBuilding']; ?>
+                 
+                  </td>
+                    <td><?=$worklist['numroom'] ?></td>
+                    <td><?=$worklist['fechaAseo'] ?></td>
+                    <td>
+                    
+                  <?= $worklist['nameEmployee']; ?>
+                  </td>
+                  
+                  <td><?=$worklist['nameservice'] ?></td>
+                    <td><?php 
+                    if($worklist['status']==0){ echo 'On hold';}elseif($worklist['status']==1){ echo 'Employee accepts';}elseif($worklist['status']==2){ echo 'In process';} elseif($worklist['status']==3){echo 'cleaning finished';}elseif($worklist['status']==4){echo 'Cleansed';}elseif($worklist['status']==4){echo 'Employee rejection';} else{echo 'error';};
+                    ?></td>
+                    
+                    <td>
+                    <a href="<?= base_url('editarworklist/'.$worklist['id']); ?>" class="btn btn-outline-warning">Edit</a>
                     </td>
-                    <td>52</td>
-                    <td>03-11-2022</td>
-                    <td>Giovana Romero Armenta</td>
-                    <td>Finalized</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Tower 1
-                    </td>
-                    <td>12</td>
-                    <td>03-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Tower 1
-                    </td>
-                    <td>50</td>
-                    <td>04-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Tower 17</td>
-                    <td>5</td>
-                    <td>04-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>Tower 12</td>
-                    <td>8</td>
-                    <td>04-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>Tower 5</td>
-                    <td>40</td>
-                    <td>05-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>8</td>
-                    <td>Tower 6</td>
-                    <td>41</td>
-                    <td>05-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>Tower 5</td>
-                    <td>50</td>
-                    <td>05-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>Tower 1</td>
-                    <td>60</td>
-                    <td>05-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>11</td>
-                    <td>Tower 1</td>
-                    <td>61</td>
-                    <td>05-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>12</td>
-                    <td>Tower 15</td>
-                    <td>62</td>
-                    <td>05-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>13</td>
-                    <td>Tower 15</td>
-                    <td>63</td>
-                    <td>06-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>14</td>
-                    <td>Tower 8</td>
-                    <td>64</td>
-                    <td>07-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>15</td>
-                    <td>Tower 8</td>
-                    <td>65</td>
-                    <td>07-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>16</td>
-                    <td>Tower 8</td>
-                    <td>66</td>
-                    <td>06-11-2022</td>
-                    <td>---</td>
-                    <td>X</td>
-                  </tr>
+                </tr>
+                <?php endforeach ?>
+                <?php endif  ?>
+                 
                   
                   </tbody>
                   
