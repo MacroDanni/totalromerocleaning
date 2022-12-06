@@ -25,7 +25,7 @@ Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
 
 <?= $this->section('content') ?>
 
-<form method="POST" action="<?=  isset($services) ? base_url('saveWorklist') :  base_url('saveWorklist')  ?>" class="row g-3">
+<form method="POST" action="<?= base_url('saveWorklist') ?>" class="row g-3">
 
 <?= csrf_field()?> 
 

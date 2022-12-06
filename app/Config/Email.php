@@ -9,7 +9,7 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail;
+    public $fromEmail='notification@totalromerocleaning.com';
 
     /**
      * @var string
@@ -47,21 +47,21 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost = 'smtp.googlemail.com';
+    public $SMTPHost='smtp.hostinger.com';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser  = 'todoromeroscleaning@gmail.com';
+    public $SMTPUser='notification@totalromerocleaning.com';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass  = 'Romeros.2022';
+    public $SMTPPass='Totalromerocleaning.1';
 
     /**
      * SMTP Port
@@ -75,7 +75,7 @@ class Email extends BaseConfig
      *
      * @var int
      */
-    public $SMTPTimeout = 60;
+    public $SMTPTimeout = 10;
 
     /**
      * Enable persistent SMTP connections

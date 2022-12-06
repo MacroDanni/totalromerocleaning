@@ -39,12 +39,6 @@ class employee extends BaseController
 
             $resultado = $EmployeeModel->insert($datos);
 
-          
-            $to="todoromeroscleaning@gmail.com";
-            $subject="prueba email todoromeros";
-            $message="esta es la prueba de la pagina de Romeros";
-
-             mail($to,$subject,$message);
 
             $data['employee'] = $EmployeeModel->orderBy('fechaIngreso', 'DESC')->findAll();
             $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => $this->request->getVar('nombre') . ' ' . 'Se registro correctamente']);

@@ -32,10 +32,10 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => 'totalromeros',
+        'hostname' => 'sql184.main-hosting.eu',
+        'username' => 'u725217723_totalromeros',
         'password' => 'J3XoE3e-YB2mZZxE',
-        'database' => 'totalromeroscleaning',
+        'database' => 'u725217723_totalromeros',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

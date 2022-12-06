@@ -25,7 +25,7 @@ class App extends BaseConfig
      * @var string
      */
     public $baseURL = 'http://totalromerocleaning.test/';
-
+    //public $baseURL = 'http://totalromerocleaning.com/';
     /**  ADD
      * --------------------------------------------------------------------------
      * Index File
@@ -37,7 +37,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $indexPage = 'index.php';
+    public $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------

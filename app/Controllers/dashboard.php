@@ -12,9 +12,10 @@ class Dashboard extends BaseController
 
         if(!$session->get('isLoggedIn')){
             return redirect()->to('/');
-            die();
+          
         }
         else{ 
+    
             return view('dashboard/dashboard');
         }
 

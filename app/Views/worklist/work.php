@@ -61,7 +61,7 @@ Events  -- <?=  date('l jS \of F Y H:i:s');?>
                   
                   <td><?=$worklist['nameservice'] ?></td>
                     <td><?php 
-                    if($worklist['status']==0){ echo 'On hold';}elseif($worklist['status']==1){ echo 'Employee accepts';}elseif($worklist['status']==2){ echo 'In process';} elseif($worklist['status']==3){echo 'Job finished';}elseif($worklist['status']==4){echo 'Cleansed';}elseif($worklist['status']==4){echo 'Employee rejection';} else{echo 'error';};
+                    if($worklist['status']==0){ echo 'On hold';}elseif($worklist['status']==1){ echo 'Accepted by Employee';}elseif($worklist['status']==2){ echo 'In process';} elseif($worklist['status']==3){echo 'Job finished';}elseif($worklist['status']==4){echo 'Cleansed';}elseif($worklist['status']==4){echo 'Employee rejection';} else{echo 'error';};
                     ?></td>
                     
                     <td>
@@ -70,7 +70,6 @@ Events  -- <?=  date('l jS \of F Y H:i:s');?>
                 </tr>
                 <?php endforeach ?>
                 <?php endif  ?>
-                 
                   
                   </tbody>
                   

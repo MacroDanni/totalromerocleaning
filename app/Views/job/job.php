@@ -38,7 +38,7 @@ Jobs List
 <a href="<?= base_url('guardareditar') ?>" type="button" class="btn btn-outline-success">New Work</a>
 
 <div class="card-body"> 
-                <table id="example1" class="table table-hover">
+                <table id="example1" class="table table-hover table-striped">
                   <thead>
                   <tr>
                     <th>#</th>
