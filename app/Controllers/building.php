@@ -13,40 +13,51 @@ class building extends BaseController
         return view('building/building',$data);
     }
 
+
+
     public function guardareditar(){
 
         return view('building/guardareditar');
+
     }
+
 
     public function savebuilding(){
 
-
         if ($this->request->getMethod() == 'post') {
+
             $BuildingModel = new \App\Models\BuildingModel();
 
             $datos = [
                 'property' => $this->request->getPost('property'),
                 'contact' => $this->request->getPost('contact'),
                 'phone' => $this->request->getPost('phone'),
-                'rooms' => $this->request->getPost('rooms'),
+                'email' => $this->request->getPost('email'),
                 'address' => $this->request->getPost('address'),
             ];
-
             $resultado = $BuildingModel->insert($datos);
 
-            $data['building'] = $BuildingModel->orderBy('property', 'DESC')->findAll();
             $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => $this->request->getVar('nombre') . ' ' . 'Se registro correctamente']);
             return redirect()->to('building');
-           
 
         } 
-  
+
         else{
+
             return view('building/building');
-            
         }
        
 
+    }
+
+
+    public function editarbuilding($id){
+        
+        $BuildingModel = new \App\Models\BuildingModel();
+        $data['building'] = $BuildingModel->where('id', $id)->first();
+
+
+        return view('building/guardareditar',$data);
     }
 
 

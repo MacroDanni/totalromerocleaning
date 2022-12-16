@@ -6,7 +6,7 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-<?= $session->nickename ?>
+<button type="button" class="btn btn-light"><?= $session->nickename ?></button>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
@@ -41,7 +41,7 @@ Building List
                     <th>Property</th>
                     <th>Contact</th>
                     <th>Phone</th>
-                    <th># Rooms</th>
+                    <th>Email</th>
                     <th>Address</th>
                     <th></th>
                   </tr>
@@ -54,7 +54,7 @@ Building List
                     <td><?=$building['property'] ?></td>
                     <td><?=$building['contact'] ?></td>
                     <td><?=$building['phone'] ?></td>
-                    <td><?=$building['rooms'] ?></td>
+                    <td><?=$building['email'] ?></td>
                     <td><?=$building['address'] ?></td>
                     <td>
                     <a href="<?= base_url('editarbuilding/'.$building['id']); ?>" class="btn btn-outline-warning">Editar</a>

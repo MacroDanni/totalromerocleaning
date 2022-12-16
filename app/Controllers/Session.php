@@ -16,12 +16,15 @@ class Session extends BaseController
         $email= $this->request->getPost('email');
 
         $password=$this->request->getPost('password');
-         $query  =$EmployeeModel->where('correoelectronico', $email)->first();
+        $query  =$EmployeeModel->where('correoelectronico', $email)->first();
          
         if($query){
             $pass = $query['contrasena'];
 
              if($password==$pass){
+
+                    if($query['statuspassword']==1){
+
                 $WorklistModel = new \App\Models\WorklistModel();
                 $session_data = [
                     'id' => $query['id'],
@@ -30,30 +33,60 @@ class Session extends BaseController
                     'apellidoPaterno' => $query['apellidoPaterno'],
                     'apellidoMaterno' => $query['apellidoMaterno'],
                     'correoElectronico' => $query['correoElectronico'],
-                    'isLoggedIn' => TRUE
+                    'tipo' => $query['tipo'],
+                    'isLoggedIn' => TRUE,
+                    'statuspassword' => '0',
                 ];
                  
                 $session->set($session_data);
                
-                
+                if($query['tipo']=='Admin'){
+                    $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Welcome: '.$query['nombre'].' '.$query['apellidoPaterno'].' '.$query['apellidoMaterno']]);
+                    return redirect()->to('dashboard');
+                }
+
                 $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Welcome: '.$query['nombre'].' '.$query['apellidoPaterno'].' '.$query['apellidoMaterno']]);
-                return redirect()->to('dashboard');
+                return redirect()->to('job');
+                
+              
                 //return view('dashboard/dashboard',$data);
                // echo  json_encode($query);
-             }
-             $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'The User Email or Password does not match, check with Admin']);
-             return redirect()->to('/');
+            }
+                else{
+                    
+                    $session_data = [
+                        'id' => $query['id'],
+                        'nickename' => $query['nickename'],
+                        'name' => $query['nombre'],
+                        'apellidoPaterno' => $query['apellidoPaterno'],
+                        'apellidoMaterno' => $query['apellidoMaterno'],
+                        'correoElectronico' => $query['correoElectronico'],
+                        'tipo' => $query['tipo'],
+                        'isLoggedIn' => TRUE,
+                        'statuspassword' => '0',
+                    ];
+                     
+                    $session->set($session_data);
+                   
+                    return  view('changepassword/changepassword');
+                }
+
+            
+
         }
         else{
             $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'The User Email or Password does not match, check with Admin']);
             return redirect()->to('/');
         }
-       
 
-        
+   
+
+    }
 
         }//final de if post
-
+            $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'The User Email or Password does not match, check with Admin']);
+            return redirect()->to('/');
+         
 
        
     }

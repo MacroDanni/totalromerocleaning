@@ -30,15 +30,7 @@ Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
 <?= csrf_field()?> 
 
 
-<div class="col-md-6">
-<select class="form-select" name="business" required aria-label="Default select example">
- <?php if ($business) :?>
-                <?php foreach($business as $business): ?> 
-                  <option value="<?= $business['nombre'] ?>"> <?=$business['nombre']?></option>
-                <?php endforeach ?>
-                <?php endif ?>
-</select>
-</div>
+
 
 <div class="col-md-6">
 <select class="form-select" name="building" required aria-label="Default select example">
@@ -72,9 +64,24 @@ Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
                 <?php endif ?>
 </select>
 </div>
+
+<div class="col-md-6">
+<select class="form-select" name="numberBuilding" required aria-label="Default select example">
+<option selected>Select # Building</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">All</option>
+</select>
+</div>
+
+
+
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label"># Room</label>
-    <input type="number" name="numroom" required class="form-control" id="number" placeholder="Room Number">
+    <input type="number" name="numroom"  class="form-control" id="number" placeholder="Room Number">
   </div>
 
   <div class="col-md-6">

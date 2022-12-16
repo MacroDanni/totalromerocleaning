@@ -6,7 +6,7 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-<?= $session->nickename ?>
+<button type="button" class="btn btn-light"><?= $session->nickename ?></button>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
@@ -26,28 +26,33 @@ Add Building  -- <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->section('content') ?>
 
 
-<form method="POST" action="<?=  isset($building) ? base_url('guardarEditar') :  base_url('savebuilding')  ?>">
+<form method="POST" action="<?=  isset($building) ? base_url('guardarEditar/'.$building['id']) :  base_url('savebuilding')  ?>">
 
 <?= csrf_field()  ?> 
   <div class="mb-3">
     <label for="email" class="form-label">Property</label>
-    <input type="text" name="property" id="property" placeholder="add property name"  required class="form-control" ariscribedby="emailHelp">
+    <input type="text" name="property" id="property" 
+    value="<?php echo isset($building) ? $building['property'] : (isset($_POST['property']) ? $_POST['property'] :'' ); ?>" placeholder="add property name"  required class="form-control" ariscribedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Contact Name</label>
-    <input type="text" name="contact" id="contact" placeholder="add contact name" required  class="form-control" ariscribedby="emailHelp">
+    <input type="text" name="contact" id="contact"
+    value="<?php echo isset($building) ? $building['contact'] : (isset($_POST['contact']) ? $_POST['contact'] :'' ); ?>" placeholder="add contact name" required  class="form-control" ariscribedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Phone Office</label>
-    <input type="number" name="phone" id="phone" placeholder="add phone number" required  class="form-control" ariscribedby="emailHelp">
+    <input type="number" name="phone" id="phone"
+    value="<?php echo isset($building) ? $building['phone'] : (isset($_POST['phone']) ? $_POST['phone'] :'' ); ?>" placeholder="add phone number" required  class="form-control" ariscribedby="emailHelp">
   </div>
   <div class="mb-3">
-    <label for="email" class="form-label"># Rooms</label>
-    <input type="number" name="rooms" id="rooms" placeholder="add rooms number" required  class="form-control" ariscribedby="emailHelp">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" name="email" id="email"
+    value="<?php echo isset($building) ? $building['email'] : (isset($_POST['email']) ? $_POST['email'] :'' ); ?>" placeholder="add email" required  class="form-control" ariscribedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Address</label>
-    <input type="text" name="address" id="address" placeholder="add address" required  class="form-control" ariscribedby="emailHelp">
+    <input type="text" name="address" id="address"
+    value="<?php echo isset($building) ? $building['address'] : (isset($_POST['address']) ? $_POST['address'] :'' ); ?>" placeholder="add address" required  class="form-control" ariscribedby="emailHelp">
   </div>
 
 

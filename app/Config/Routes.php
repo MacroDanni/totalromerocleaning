@@ -41,6 +41,7 @@ $routes->get('worklist', 'worklist::worklist');
 $routes->get('calendar', 'calendar::calendar');
 $routes->get('employee', 'employee::employee'); 
 $routes->post('guardarEditar', 'employee::guardareditar');
+$routes->get('deleteEmployee/(:num)', 'employee::delete/$1');
 $routes->post('guardaremployee', 'employee::guardaremployee');
 $routes->get('editaremployee/(:num)', 'employee::editaremployee/$1');
 $routes->get('altaemployee', 'employee::altaemployee');
@@ -49,11 +50,17 @@ $routes->get('guardareditar', 'worklist::guardareditar');
 $routes->get('building', 'building::building');
 $routes->get('newBuilding', 'building::guardareditar');
 $routes->post('savebuilding', 'building::savebuilding');
+$routes->get('editarbuilding/(:num)', 'building::editarbuilding/$1');
+
+$routes->post('guardarEditar/(:num)', 'building::guardarEditar/$1');
+
 
 
 $routes->post('saveWorklist', 'worklist::saveWorklist');
 
 $routes->post('session', 'Session::session');
+$routes->post('savepasswordemployee', 'savepasswordemployee::savepassword');
+
 
 $routes->get('contact', 'contact::contact');
 $routes->get('job', 'job::job');
@@ -61,10 +68,19 @@ $routes->get('job', 'job::job');
 $routes->get('logout', 'Session::logout');
 
 
+$routes->get('canceljob/(:num)', 'job::canceljob/$1');
 $routes->get('acceptjob/(:num)', 'job::acceptjob/$1');
 $routes->get('cleaningfinished/(:num)', 'job::cleanedup/$1');
 $routes->get('startjob/(:num)', 'job::startclean/$1');
 $routes->get('jobfinished/(:num)', 'job::jobfinished/$1');
+
+
+$routes->get('cleaningsupplyuser', 'cleaningsupplyuser::cleaningsupplyuser'); 
+$routes->get('newcleaningsupplyuser', 'cleaningsupplyuser::newcleaningsupplyuser'); 
+$routes->post('savecleaningsupply', 'cleaningsupply::savecleaningsupply');
+
+
+$routes->post('solicitando', 'cleaningsupplyuser::solicitando');
 
 /*
   * --------------------------------------------------------------------

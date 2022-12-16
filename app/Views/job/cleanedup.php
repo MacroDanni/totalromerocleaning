@@ -6,7 +6,7 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-<?= $session->nickename ?>
+<button type="button" class="btn btn-light"><?= $session->nickename ?></button>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>

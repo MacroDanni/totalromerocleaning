@@ -33,9 +33,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'sql184.main-hosting.eu',
-        'username' => 'u725217723_totalromeros',
-        'password' => 'J3XoE3e-YB2mZZxE',
-        'database' => 'u725217723_totalromeros',
+        'username' => 'u725217723_totalromerocle',
+        'password' => 'iVPeF!pVZ1[',
+        'database' => 'u725217723_totalromerosc',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

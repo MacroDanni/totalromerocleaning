@@ -36,6 +36,7 @@ Events  -- <?=  date('l jS \of F Y H:i:s');?>
                   <tr>
                     <th>#</th>
                     <th>Building</th>
+                    <th># Building</th>
                     <th># Rooms</th>
                     <th>Date</th>
                     <th>Assigned to</th>
@@ -52,8 +53,9 @@ Events  -- <?=  date('l jS \of F Y H:i:s');?>
                     <td><?=$worklist['nameBuilding']; ?>
                  
                   </td>
+                    <td><?=$worklist['numberBuilding'] ?></td>
                     <td><?=$worklist['numroom'] ?></td>
-                    <td><?=$worklist['fechaAseo'] ?></td>
+                    <td><?=date("m/d/Y", strtotime($worklist['fechaAseo'])) ?></td>
                     <td>
                     
                   <?= $worklist['nameEmployee']; ?>
@@ -61,7 +63,7 @@ Events  -- <?=  date('l jS \of F Y H:i:s');?>
                   
                   <td><?=$worklist['nameservice'] ?></td>
                     <td><?php 
-                    if($worklist['status']==0){ echo 'On hold';}elseif($worklist['status']==1){ echo 'Accepted by Employee';}elseif($worklist['status']==2){ echo 'In process';} elseif($worklist['status']==3){echo 'Job finished';}elseif($worklist['status']==4){echo 'Cleansed';}elseif($worklist['status']==4){echo 'Employee rejection';} else{echo 'error';};
+                    if($worklist['status']==0){ echo 'On hold';}elseif($worklist['status']==1){ echo 'Accepted by Employee';}elseif($worklist['status']==2){ echo 'In process';} elseif($worklist['status']==3){echo 'Job finished';}elseif($worklist['status']==4){echo 'Cancel';} else{echo 'error';};
                     ?></td>
                     
                     <td>

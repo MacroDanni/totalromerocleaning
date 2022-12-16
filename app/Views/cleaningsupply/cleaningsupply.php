@@ -10,20 +10,21 @@ Total Romeros Cleaning
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
-Portal Employees
+Portal Cleaning Supply
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-Employees
+Cleaning Supply List
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
-Registration -- <?=  date('l jS \of F Y H:i:s');?>
+<?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
-<a href="<?= base_url('altaemployee') ?>" type="button" class="btn btn-outline-success">New Employee</a>
+
+<a href="<?= base_url('newcleaningsupply') ?>" type="button" class="btn btn-outline-success">New Cleaning Supply</a>
 
 
 <div class="card-body">
@@ -37,26 +38,19 @@ Registration -- <?=  date('l jS \of F Y H:i:s');?>
             <thead>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Date of Birth</th>
-                    <th scope="col">Account Type</th>
+                    <th scope="col">kind</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
 
             <tbody>
-                <?php if ($employee) :?>
-                <?php foreach($employee as $employee): ?>
+                <?php if ($cleaningsupply) :?>
+                <?php foreach($cleaningsupply as $cleaningsupply): ?>
                 <tr>                    
-                    <td><?=$employee['nombre'].' '.$employee['apellidoPaterno'] .' '.$employee['apellidoMaterno']?></td>
-                    <td><?=$employee['telefono'] ?></td>
-                    <td><?=$employee['correoElectronico'] ?></td>
-                    <td><?=$employee['fechanacimiento'] ?></td>
-                    <td><?=$employee['tipo'] ?></td>
-                    <td><script> echo  $e= moment("20111031", "YYYYMMDD").fromNow();</script>
-                    <a href="<?= base_url('editaremployee/'.$employee['id']); ?>" class="btn btn-outline-warning">Editar</a>
-                 
+                    <td><?=$cleaningsupply['name']?></td>
+                    <td><?=$cleaningsupply['kind'] ?></td>
+                    <td>
+                         <a href="<?= base_url('editcleaningsupply/'.$cleaningsupply['id']); ?>" class="btn btn-outline-warning">Edit</a>
                     </td>
                     </tr>
                 <?php endforeach ?>
@@ -65,4 +59,5 @@ Registration -- <?=  date('l jS \of F Y H:i:s');?>
                 
         </table>
                 </div>
-<?= $this->endSection() ?>
+
+<?= $this->endSection() ?>           

@@ -8,7 +8,7 @@ class BuildingModel extends Model
 
 	protected $table='building';
 	protected $primaryKey='id';
-	protected $allowedFields=['property','address','phone','contact','rooms','eliminarEstatus'];
+	protected $allowedFields=['property','address','phone','contact','email','rooms','eliminarEstatus'];
 
 }
  

@@ -8,12 +8,13 @@ class employee extends BaseController
     public function employee()
     {
         $EmployeeModel = new \App\Models\EmployeeModel();
-
-
         $data['employee'] = $EmployeeModel->orderBy('fechaIngreso', 'DESC')->findAll();
      
         return view('employee/employee', $data);
     }
+
+ 
+
 
 
     public function guardaremployee(){
@@ -22,38 +23,78 @@ class employee extends BaseController
             $EmployeeModel = new \App\Models\EmployeeModel();
             $nickename=substr(ucfirst($this->request->getPost('nombre')),0,1).substr(ucfirst($this->request->getPost('apellidoPaterno')),0,1).ucfirst($this->request->getPost('apellidoMaterno'));
         
+            $key = "";
+            $pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+            $max = strlen($pattern)-1;
+            for($i = 0; $i < 8; $i++){
+                $key .= substr($pattern, mt_rand(0,$max), 1);
+            }
+        
 
             $datos = [
                 'nombre' => ucfirst($this->request->getPost('nombre')),
-                'nickename' => $nickename,
                 'apellidoPaterno' => ucfirst($this->request->getPost('apellidoPaterno')),
                 'apellidoMaterno' => ucfirst($this->request->getPost('apellidoMaterno')),
                 'fechanacimiento' => $this->request->getPost('fechanacimiento'),
                 'telefono' => $this->request->getPost('telefono'),
-                'foto' => $this->request->getPost('foto'),
                 'correoElectronico' => $this->request->getPost('correoElectronico'),
                 'tipo' => $this->request->getPost('tipo'),
-                'contrasena' => $this->request->getPost('contrasena'),
+                'contrasena' => $key,
                 'estatus' => $this->request->getPost('estatus'),
+                'statuspassword' => '0',
             ];
 
             $resultado = $EmployeeModel->insert($datos);
 
+            $newRecord = [
+                'nickename'=>  $nickename.$EmployeeModel->getInsertID(),
+                ];
+            $resultado2=$EmployeeModel->update($EmployeeModel->getInsertID(), $newRecord);
 
-            $data['employee'] = $EmployeeModel->orderBy('fechaIngreso', 'DESC')->findAll();
-            $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => $this->request->getVar('nombre') . ' ' . 'Se registro correctamente']);
+            $to=$this->request->getPost('correoElectronico');
+            $subject='Nueva Cuenta Creada!';
+            $message='<h2>Cuenta nueva en Total Romeros Cleaning</h2>
+            <DIV>Hola '.$nickename.$EmployeeModel->getInsertID().' , por favor de modificar la contraseña temporal por una clave personal.</DIV>
+            <br>
+            Email: '. $this->request->getPost('correoElectronico').'<br>
+            Password(temp): <h3>'.$key.'</h3>
+            <br>
+            <a href="http://totalromeroscleaning.com/" ?>Inicia sesion aqui!</a>
+            ';
+        
+            $email = \Config\Services::email();
+            $email->setTo($to);
+            $email->setFrom('notification@totalromeroscleaning.com', 'Notification - TotalRomerosCleaning');
+            
+            $email->setSubject($subject);
+            $email->setMessage($message);
+            $respuesta=$email->send();
 
-            //return view('employee/employee',$data);
+
+            if($respuesta==1){
+                
+           
+            $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => $nickename.$EmployeeModel->getInsertID(). ' ' . 'Se registro correctamente']);
+            return redirect()->to('employee');       
+
+            }
+            else{
+            $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'No se mando la clave por email']);
+            return redirect()->to('employee'); 
+            }
         } 
   
         else{
-            return view('employee/employee');
+            return redirect()->to('employee');       
             
         }
        
 
     }
 
+
+
+    
     public function editaremployee($id)
     {
 
@@ -73,6 +114,9 @@ class employee extends BaseController
 
 
 
+
+
+
     public function guardarEditar(){
 
 
@@ -88,12 +132,11 @@ class employee extends BaseController
            'fechanacimiento'=>  $this->request->getPost('fechanacimiento'),
            'telefono'=>  $this->request->getPost('telefono'),
            'correoElectronico'=>  $this->request->getPost('correoElectronico'),
-           'foto'=>  $this->request->getPost('foto'),
            'tipo'=>  $this->request->getPost('tipo'),
            'estatus'=>  $this->request->getPost('estatus'),
            ];
            $resultado=$EmployeeModel->update($id, $datos);
-         print($resultado);
+        
 
            if ($resultado > 0) {
             $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Se a guardado satisfactoriamente '.$id.$this->request->getVar('nombre').'!']);
@@ -106,6 +149,26 @@ class employee extends BaseController
        
        // return view('employee/guardareditar');
 
+    }
+
+    public function delete($id){
+        $db      = \Config\Database::connect();
+        $EmployeeModel = new \App\Models\EmployeeModel();
+        
+
+        $resultado=$EmployeeModel->delete(['id' => $id]);
+
+
+
+        if ($resultado > 0) {
+            $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Se a eliminado satisfactoriamente ']);
+            return redirect()->to('employee');
+        } else {
+            $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'Error, no se pudo eliminar, contactar al administrador']);
+        
+            return redirect()->to('employee');
+        }
+      
     }
 
 

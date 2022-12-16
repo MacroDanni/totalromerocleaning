@@ -6,7 +6,7 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-<?= $session->nickename ?>
+<button type="button" class="btn btn-light"><?= $session->nickename ?></button>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
@@ -24,18 +24,18 @@ Contact
 
 <?= $this->section('content') ?>
      <!-- Message Start -->
-     <a href="#" class="dropdown-item">
+
      <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../../dist/img/user8-128x128fd.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
-                  Paulete Romero
+                  Paulette Romero
                   <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
                 </h3>
-                <p class="text-sm">Phone: +1 (952) 463-6749</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <p class="text-sm">Phone: +1 (952) 4636 749</p>
+                <p class="text-sm ">Email: pauletteromero@totalromeroscleaning.com</p>
               </div>
             </div>
             <!-- Message End -->
-</a>
+
 <?= $this->endSection() ?>           

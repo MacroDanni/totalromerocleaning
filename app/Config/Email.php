@@ -9,7 +9,7 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail='notification@totalromerocleaning.com';
+    public $fromEmail='notification@totalromeroscleaning.com';
 
     /**
      * @var string
@@ -54,14 +54,14 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPUser='notification@totalromerocleaning.com';
+    public $SMTPUser='notification@totalromeroscleaning.com';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass='Totalromerocleaning.1';
+    public $SMTPPass='Totalromeroscleaning.1';
 
     /**
      * SMTP Port
