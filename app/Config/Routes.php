@@ -36,7 +36,8 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('dashboard', 'dashboard::dashboard');
+//$routes->get('dashboard', 'dashboard::dashboard');
+$routes->get('dashboard', 'worklist::worklist');
 $routes->get('worklist', 'worklist::worklist');
 $routes->get('calendar', 'calendar::calendar');
 $routes->get('employee', 'employee::employee'); 
@@ -81,7 +82,10 @@ $routes->post('savecleaningsupply', 'cleaningsupply::savecleaningsupply');
 
 
 $routes->post('solicitando', 'cleaningsupplyuser::solicitando');
-
+$routes->get('cleaningsupply', 'cleaningsupply::cleaningsupply');
+$routes->get('newcleaningsupply', 'cleaningsupply::newcleaningsupply'); 
+$routes->get('editcleaningsupply/(:num)', 'cleaningsupply::editcleaningsupply/$1'); 
+$routes->post('saveedit/(:num)', 'cleaningsupply::saveedit/$1'); 
 /*
   * --------------------------------------------------------------------
  * Additional Routing

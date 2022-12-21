@@ -36,7 +36,7 @@
   </center>
     
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Inicio de sesion</p>
 
       <form action="session" method="post" ?>
       <?= csrf_field()?> 
@@ -62,7 +62,7 @@
          
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
             
           </div>
           <!-- /.col -->

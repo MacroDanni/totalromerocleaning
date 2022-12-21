@@ -10,7 +10,7 @@ class Worklist extends BaseController
 
         $WorklistModel = new \App\Models\WorklistModel();
         $EmployeeModel = new \App\Models\EmployeeModel();
-        $data['worklist'] = $WorklistModel->orderBy('fechaAseo', 'ASC')->findAll();
+        $data['worklist'] = $WorklistModel->orderBy('registrationdate', 'ASC')->findAll();
         $data['employee'] = $EmployeeModel->find($this->request->getPost('employee'));
        return view('worklist/work',$data);
     }

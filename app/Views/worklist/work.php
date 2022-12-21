@@ -6,23 +6,22 @@ Total Romeros Cleaning
 <?= $this->endsection() ?>
 
 <?= $this->section('nombreUsuario') ?>
-<?= $session->nickename ?>
+<button type="button" class="btn btn-light"><?= $session->nickename ?></button>
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
-Portal Work list
+Portal Lista de Trabajo
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-Work List
+Lista de trabajo
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
-Events  -- <?=  date('l jS \of F Y H:i:s');?>
+<a href="<?= base_url('guardareditar') ?>" type="button" class="btn btn-outline-success">Nuevo Trabajo </a> 
+ <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
-
-<a href="<?= base_url('guardareditar') ?>" type="button" class="btn btn-outline-success">New Work</a>
 
 <div class="card-body"> 
 <?php if ($flag = session()->getFlashdata('flag')) {  ?>
@@ -31,17 +30,17 @@ Events  -- <?=  date('l jS \of F Y H:i:s');?>
         </div>
         <?php } ?>
         
-                <table id="example1" class="table table-hover">
+                <table id="example1"  class="table table-hover table-striped">
                   <thead>
                   <tr>
                     <th>#</th>
-                    <th>Building</th>
-                    <th># Building</th>
-                    <th># Rooms</th>
-                    <th>Date</th>
-                    <th>Assigned to</th>
-                    <th>Service</th>
-                    <th>Status</th>
+                    <th>Edificio</th>
+                    <th># Edificio</th>
+                    <th># Habitacion</th>
+                    <th>Fecha</th>
+                    <th>Asignado a</th>
+                    <th>Servicio</th>
+                    <th>Estatus</th>
                     <th></th>
                   </tr>
                   </thead>
@@ -53,7 +52,7 @@ Events  -- <?=  date('l jS \of F Y H:i:s');?>
                     <td><?=$worklist['nameBuilding']; ?>
                  
                   </td>
-                    <td><?=$worklist['numberBuilding'] ?></td>
+                    <td><?php if($worklist['numberBuilding']==6){echo 'All';} else{ echo $worklist['numberBuilding'];} ?></td>
                     <td><?=$worklist['numroom'] ?></td>
                     <td><?=date("m/d/Y", strtotime($worklist['fechaAseo'])) ?></td>
                     <td>
@@ -63,11 +62,11 @@ Events  -- <?=  date('l jS \of F Y H:i:s');?>
                   
                   <td><?=$worklist['nameservice'] ?></td>
                     <td><?php 
-                    if($worklist['status']==0){ echo 'On hold';}elseif($worklist['status']==1){ echo 'Accepted by Employee';}elseif($worklist['status']==2){ echo 'In process';} elseif($worklist['status']==3){echo 'Job finished';}elseif($worklist['status']==4){echo 'Cancel';} else{echo 'error';};
+                    if($worklist['status']==0){ echo '<p class="btn btn-warning btn-sm">En espera..</p>';}elseif($worklist['status']==1){ echo '<p class="btn btn-success btn-sm">Aceptado por</p>';}elseif($worklist['status']==2){ echo '<p class="btn btn-success btn-sm">En proceso</p>';} elseif($worklist['status']==3){echo '<p class="btn btn-success btn-sm">Trabajo Finalizado</p>';}elseif($worklist['status']==4){echo '<p class="btn btn-danger btn-sm">Cancelado</p>';} else{echo 'error';};
                     ?></td>
                     
                     <td>
-                    <a href="<?= base_url('editarworklist/'.$worklist['id']); ?>" class="btn btn-outline-warning">Edit</a>
+                    <a href="<?= base_url('editarworklist/'.$worklist['id']); ?>" class="btn btn-outline-warning">Editar</a>
                     </td>
                 </tr>
                 <?php endforeach ?>

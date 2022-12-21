@@ -11,21 +11,22 @@ Total Romeros Cleaning
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
-Portal Cleaning Supply
+Portal Suministros
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-Cleaning Supply List
+Lista de Suministros
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
+<a href="<?= base_url('newcleaningsupplyuser') ?>" type="button" class="btn btn-outline-success">Nueva Solicitud</a> 
 <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
 
-<a href="<?= base_url('newcleaningsupplyuser') ?>" type="button" class="btn btn-outline-success">Request a Cleaning Supply</a>
+
 
 
 <div class="card-body">
@@ -35,7 +36,7 @@ Cleaning Supply List
         </div>
         <?php } ?>
 
-        <table class="table table-hover" id="example1">
+        <table  id="example1"  class="table table-hover table-striped">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>

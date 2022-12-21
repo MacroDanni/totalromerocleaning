@@ -10,20 +10,20 @@ Total Romeros Cleaning
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
-Portal Employees
+Portal Empleados
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-Employees
+Alta Empleado
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
-Registration -- <?=  date('l jS \of F Y H:i:s');?>
+<a href="<?= base_url('altaemployee') ?>" type="button" class="btn btn-outline-success">Nuevo Empleado</a> <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
-<a href="<?= base_url('altaemployee') ?>" type="button" class="btn btn-outline-success">New Employee</a>
+
 
 
 <div class="card-body">
@@ -33,14 +33,14 @@ Registration -- <?=  date('l jS \of F Y H:i:s');?>
         </div>
         <?php } ?>
 
-        <table class="table table-hover" id="example1">
+        <table  id="example1"  class="table table-hover table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Date of Birth</th>
-                    <th scope="col">Account Type</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Fecha Cumpleaños</th>
+                    <th scope="col">Tipo Cuenta</th>
                     <th scope="col"></th>
                 </tr>
             </thead>

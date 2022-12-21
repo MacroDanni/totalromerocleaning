@@ -10,21 +10,20 @@ Total Romeros Cleaning
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
-Portal Building
+Portal Edificios
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-Building List
+Lista de Edificios
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
-<?=  date('l jS \of F Y H:i:s');?>
+<a href="<?= base_url('newBuilding') ?>" type="button" class="btn btn-outline-success">Nuevo Edificio</a>  <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 
 
 <?= $this->section('content') ?>
 
-<a href="<?= base_url('newBuilding') ?>" type="button" class="btn btn-outline-success">New Building</a>
 
               <!-- /.card-header -->
               <div class="card-body">
@@ -34,15 +33,15 @@ Building List
         </div>
         
         <?php } ?>
-                <table id="example1" class="table table-hover">
+                <table id="example1" class="table table-hover table-striped">
                   <thead>
                   <tr>
                     <th>#</th>
-                    <th>Property</th>
-                    <th>Contact</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Address</th>
+                    <th>Propiedad</th>
+                    <th>Contacto</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    <th>Dirección</th>
                     <th></th>
                   </tr>
                   </thead>

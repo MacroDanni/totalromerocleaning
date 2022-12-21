@@ -10,11 +10,11 @@ Total Romeros Cleaning
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
-Portal Cleaning Supply
+Portal Suministros
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-New Cleaning Supply 
+Nuevo Suministro
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
@@ -24,32 +24,34 @@ New Cleaning Supply
 <?= $this->section('content') ?>
 
 
-<form method="POST" action="<?=  isset($cleaningsupply) ? base_url('edit') :  base_url('savecleaningsupply')  ?>">
+<form method="POST" action="<?php echo isset($cleaningsupply) ?  base_url('saveedit/'.$cleaningsupply['id'].''):  base_url('savecleaningsupply') ?>">
 
 <?= csrf_field()  ?> 
                 <div class="card-body">
                 <div class="row">
                   <div class="form-group col-sm-6" >
-                    <label >Product Name</label>
+                    <label >Nombre del Producto</label>
                     <input type="hidden" name="id" value="<?php echo isset($cleaningsupply) ? $cleaningsupply['id'] : (isset($_POST['id']) ? $_POST['id'] :'' ); ?>">
-                    <input type="text" class="form-control" id="name" name="name" 
-                    value="<?php echo isset($cleaningsupply) ? $cleaningsupply['name'] : (isset($_POST['name']) ? $_POST['name'] :'' ); ?>" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre" 
+                    value="<?php echo isset($cleaningsupply) ? $cleaningsupply['nombre'] : (isset($_POST['nombre']) ? $_POST['nombre'] :'' ); ?>" required>
                   </div>
                   </div>
                  
                 <div class="row">
 
                 <div class="form-group col-sm-4">
-                  <label for="exampleSelectBorder">Kind of Product</label>
-                  <select class="custom-select form-control-border" name="kind" id="kind" required>
+                  <label for="exampleSelectBorder">Tipo de producto</label>
+                  <select class="custom-select form-control-border" name="tipo" id="tipo" required>
                    
-                  <?php echo isset($cleaningsupply) ?  '<option value="'.$cleaningsupply['kind'].'">'.$cleaningsupply['kind'].'</option>': " <option selected>Select</option>"; ?>
+                  <?php echo isset($cleaningsupply) ?  '<option value="'.$cleaningsupply['tipo'].'">'.$cleaningsupply['tipo'].'</option>': " <option selected>Select</option>"; ?>
                   
-                    <option value="Floor">Floor</option>
-                    <option value="Mirror">Mirror</option>
-                    <option value="Door">Door</option>
-                    <option value="Fragrance">Fragrance</option>                    
-                    <option value="Other">Other</option>
+                    <option value="Piso">Piso</option>
+                    <option value="Espejos">Espejos</option>
+                    <option value="Puertas">Puertas</option>
+                    <option value="Aroma">Aroma</option>                    
+                    <option value="Elevador">Elevador</option>              
+                    <option value="Alfombra">Alfombra</option>            
+                    <option value="Alfombra">Estufa</option>
                   </select>
                 </div>
 

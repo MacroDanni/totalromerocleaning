@@ -34,15 +34,15 @@ Jobs List
 
 
 <div class="card-body"> 
-                <table id="example1" class="table table-hover table-striped">
+                <table id="example2" class="table table-hover table-striped">
                   <thead>
                   <tr>
                     <th>#</th>
-                    <th>Building</th>
-                    <th># Rooms</th>
-                    <th>Date</th>
-                    <th>Service</th>
-                    <th>Status</th>
+                    <th>Edificio</th>
+                    <th># Habitacion</th>
+                    <th>Fecha</th>
+                    <th>Servicio</th>
+                    <th>Estatus</th>
                     <th></th>
                   </tr>
                   </thead>
@@ -57,24 +57,24 @@ Jobs List
                     <td> <?= $job['nameservice'] ?> </td>
              
                     <td><?php 
-                    if($job['status']==0){ echo 'On hold';}elseif($job['status']==1){ echo '<p class="btn btn-success btn-sm">Employee accepts</p>';}elseif($job['status']==2){ echo '<p  class="btn btn-secondary btn-sm">In process</p>';} elseif($job['status']==3){echo '<p  class="btn btn-success btn-sm">Job Finished</p>';}elseif($job['status']==4){echo '<p  class="btn btn-danger btn-sm">Employee Cancel</p>';} else{echo 'error';};
+                    if($job['status']==0){ echo 'En Espera';}elseif($job['status']==1){ echo '<p class="btn btn-success btn-sm">Aceptado</p>';}elseif($job['status']==2){ echo '<p  class="btn btn-secondary btn-sm">En proceso</p>';} elseif($job['status']==3){echo '<p  class="btn btn-success btn-sm">Finalizado</p>';}elseif($job['status']==4){echo '<p  class="btn btn-danger btn-sm">Cancelado</p>';} else{echo 'error';};
                     ?></td>
                     <td>
                       <?php
                       if($job['status']==0){ 
                         ?>
-                        <a href="<?=base_url('acceptjob/'.$job['id']) ?>"  class="btn btn-success">Accept</a>
-                        <a href="<?=base_url('canceljob/'.$job['id']) ?>"  class="btn btn-danger">Cancel</a>
+                        <a href="<?=base_url('acceptjob/'.$job['id']) ?>"  class="btn btn-success">Aceptar</a>
+                        <a href="<?=base_url('canceljob/'.$job['id']) ?>"  class="btn btn-danger">Cancelar</a>
                         
                               
                      <?php }
                      elseif($job['status']==1 and  date('Y-m-d') >= $job['fechaAseo']){ 
                       ?>
-                      <a href="<?=base_url('startjob/'.$job['id']) ?>"  class="btn btn-outline-success">Start Cleaning</a>
+                      <a href="<?=base_url('startjob/'.$job['id']) ?>"  class="btn btn-outline-success">Iniciar Trabajo</a>
                       <?php }
                        elseif($job['status']==2){ 
                         ?>
-                        <a href="<?=base_url('cleaningfinished/'.$job['id']) ?>"  class="btn btn-outline-success">Job Finished</a>
+                        <a href="<?=base_url('cleaningfinished/'.$job['id']) ?>"  class="btn btn-outline-success">Trabajo Finalizado</a>
                         <?php }
                         else{echo "------";}
                    

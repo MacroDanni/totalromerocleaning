@@ -14,17 +14,15 @@ Portal Cleaning Supply
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-Cleaning Supply List
+Lista de Suministros
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
-<?=  date('l jS \of F Y H:i:s');?>
+<a href="<?= base_url('newcleaningsupply') ?>" type="button" class="btn btn-outline-success">Nuevo Suministro</a> <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
-
-<a href="<?= base_url('newcleaningsupply') ?>" type="button" class="btn btn-outline-success">New Cleaning Supply</a>
 
 
 <div class="card-body">
@@ -34,23 +32,23 @@ Cleaning Supply List
         </div>
         <?php } ?>
 
-        <table class="table table-hover" id="example1">
+        <table  id="example1" class="table table-hover table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">kind</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
 
             <tbody>
-                <?php if ($cleaningsupply) :?>
-                <?php foreach($cleaningsupply as $cleaningsupply): ?>
+                <?php if ($Product) :?>
+                <?php foreach($Product as $Product): ?>
                 <tr>                    
-                    <td><?=$cleaningsupply['name']?></td>
-                    <td><?=$cleaningsupply['kind'] ?></td>
+                    <td><?=$Product['nombre']?></td>
+                    <td><?=$Product['tipo'] ?></td>
                     <td>
-                         <a href="<?= base_url('editcleaningsupply/'.$cleaningsupply['id']); ?>" class="btn btn-outline-warning">Edit</a>
+                         <a href="<?= base_url('editcleaningsupply/'.$Product['id']); ?>" class="btn btn-outline-warning">Editar</a>
                     </td>
                     </tr>
                 <?php endforeach ?>
