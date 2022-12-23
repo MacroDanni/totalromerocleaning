@@ -302,6 +302,7 @@
 
 
 
+
 <script>
   $(function () {
 
@@ -312,9 +313,17 @@
 
      $("#example2").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": true, "searching": true,
-      
+      "order": [ 2, "desc" ]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
+
+  $("#example3").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": true, "searching": true,
+      "buttons": ["copy", "excel", "pdf", "print"],
+      "order": [ 4, "desc" ]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+  
 </script>
 
 

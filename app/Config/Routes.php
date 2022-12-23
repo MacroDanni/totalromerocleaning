@@ -48,6 +48,10 @@ $routes->get('editaremployee/(:num)', 'employee::editaremployee/$1');
 $routes->get('altaemployee', 'employee::altaemployee');
 $routes->get('guardareditar', 'worklist::guardareditar');
 
+$routes->post('salvarcancelado', 'worklist::salvarcancelado'); 
+
+
+
 $routes->get('building', 'building::building');
 $routes->get('newBuilding', 'building::guardareditar');
 $routes->post('savebuilding', 'building::savebuilding');
@@ -86,6 +90,8 @@ $routes->get('cleaningsupply', 'cleaningsupply::cleaningsupply');
 $routes->get('newcleaningsupply', 'cleaningsupply::newcleaningsupply'); 
 $routes->get('editcleaningsupply/(:num)', 'cleaningsupply::editcleaningsupply/$1'); 
 $routes->post('saveedit/(:num)', 'cleaningsupply::saveedit/$1'); 
+
+
 /*
   * --------------------------------------------------------------------
  * Additional Routing

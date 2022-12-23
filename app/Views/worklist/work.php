@@ -30,7 +30,7 @@ Lista de trabajo
         </div>
         <?php } ?>
         
-                <table id="example1"  class="table table-hover table-striped">
+                <table id="example3"  class="table table-hover table-striped">
                   <thead>
                   <tr>
                     <th>#</th>
@@ -41,12 +41,13 @@ Lista de trabajo
                     <th>Asignado a</th>
                     <th>Servicio</th>
                     <th>Estatus</th>
-                    <th></th>
+                    
                   </tr>
                   </thead>
                   <tbody>
                   <?php if ($worklist) :?>
                 <?php foreach($worklist as $worklist): ?>
+                 
                 <tr>                    
                     <td><?=$worklist['id'] ?></td>
                     <td><?=$worklist['nameBuilding']; ?>
@@ -57,17 +58,41 @@ Lista de trabajo
                     <td><?=date("m/d/Y", strtotime($worklist['fechaAseo'])) ?></td>
                     <td>
                     
-                  <?= $worklist['nameEmployee']; ?>
+                
+                                      <input type="hidden" name="idworklist" value="<?=$worklist['id'] ?>">
+               
+                  <?php
+                    if($worklist['status']==4){
+                      ?>
+                     <form method="POST" action="<?= base_url('salvarcancelado'); ?>" class="row g-3">
+                  <?= csrf_field()?> 
+                                      <input type="hidden" name="id" value="<?=$worklist['id'] ?>">
+                                            <div class="col-md-12">
+                                                        <select class="form-select" name="nickename" required aria-label="Default select example">
+                                                          <option selected>Selecciona Empleado</option>
+                                                        <?php if ($employee) :?>
+                                                                        <?php foreach($employee as $employee): ?>
+                                                                          <option value="<?= $employee['nickename'] ?>"> <?=$employee['nombre'].' '.$employee['apellidoPaterno'].' '.$employee['apellidoMaterno'] ?></option>
+                                                                <?php endforeach ?>
+                                                                <?php endif ?>
+                                                </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+                          </form>
+                      <?php
+                    }
+                    else{
+                        echo  $worklist['nameEmployee'];
+                    }
+                    ?>
                   </td>
                   
                   <td><?=$worklist['nameservice'] ?></td>
                     <td><?php 
-                    if($worklist['status']==0){ echo '<p class="btn btn-warning btn-sm">En espera..</p>';}elseif($worklist['status']==1){ echo '<p class="btn btn-success btn-sm">Aceptado por</p>';}elseif($worklist['status']==2){ echo '<p class="btn btn-success btn-sm">En proceso</p>';} elseif($worklist['status']==3){echo '<p class="btn btn-success btn-sm">Trabajo Finalizado</p>';}elseif($worklist['status']==4){echo '<p class="btn btn-danger btn-sm">Cancelado</p>';} else{echo 'error';};
+                    if($worklist['status']==0){ echo '<p class="btn btn-warning btn-sm">En espera</p>';}elseif($worklist['status']==1){ echo '<p class="btn btn-success btn-sm">Aceptado</p>';}elseif($worklist['status']==2){ echo '<p class="btn btn-success btn-sm">Limpiando</p>';} elseif($worklist['status']==3){echo '<p class="btn btn-success btn-sm">Finalizado</p>';}elseif($worklist['status']==4){echo '<p class="btn btn-danger btn-sm">Cancelado</p>';} else{echo 'error';};
                     ?></td>
                     
-                    <td>
-                    <a href="<?= base_url('editarworklist/'.$worklist['id']); ?>" class="btn btn-outline-warning">Editar</a>
-                    </td>
+                   
                 </tr>
                 <?php endforeach ?>
                 <?php endif  ?>

@@ -33,6 +33,65 @@ class Worklist extends BaseController
 
     }
 
+
+    public function salvarcancelado(){
+
+        $WorklistModel = new \App\Models\WorklistModel();
+        $EmployeeModel = new \App\Models\EmployeeModel();
+
+        $nickname=$this->request->getPost('nickename');
+        $idWorklist=$this->request->getPost('id');
+
+        $datosempleado=$EmployeeModel->where('nickename', $nickname)->first();
+        $datosworklist=$WorklistModel->where('id', $idWorklist)->first();
+
+    
+        $datos = [
+               'status' => '0',
+               'nameEmployee' => $this->request->getPost('nickename')
+
+        ];
+    
+        $resultado=$WorklistModel->update($idWorklist, $datos);
+
+    if($resultado==1){
+            $to= $datosempleado['correoElectronico'];
+            $subject="New Service: ".$datosworklist['nameservice'];
+            $message='
+            <br>Detalles del servicio:<BR>Edificio: ******** <br>Servicio: '.$datosworklist['nameservice'].'<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha del Servicio: '.$datosworklist['fechaAseo'].'<br> Descripcion: '.$datosworklist['description'].'<br>
+            <br>
+            <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
+              ';
+        
+        $email = \Config\Services::email();
+        $email->setTo($to);
+        $email->setFrom('notification@totalromeroscleaning.com', 'Notificacion - TotalRomerosCleaning');
+        
+        $email->setSubject($subject);
+        $email->setMessage($message);
+        
+        $respuesta=$email->send();
+            
+        
+            if($respuesta==1){
+
+                   
+                $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Se notifico al usuario correctamente']);
+                return redirect()->to('worklist'); 
+            }
+            else{
+
+                $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'No se notifico al usuario, error servidor']);
+                return redirect()->to('worklist'); 
+            }
+
+        }
+        else
+        $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'Error con servidor , contactar al administrador']);
+        return redirect()->to('worklist'); 
+
+    }
+
     public function saveWorklist(){
         
         $EmployeeModel = new \App\Models\EmployeeModel();
@@ -67,11 +126,11 @@ class Worklist extends BaseController
             ];
     
             $to= $dats['correoElectronico'];
-            $subject="New Service: ".$this->request->getPost('service');
+            $subject="Nuevo Servicio: ".$this->request->getPost('service');
             $message='
-            <br>Detail Service:<BR>Building: ******** <br>Service: '.$this->request->getPost('service').'<br># Building: ********* <br># Room: ********* <br>Service Date: '. $this->request->getPost('date').'<br> Description: '.$this->request->getPost('description').'<br>
+            <br>Detail Service:<BR>Edificio: ******** <br>Servicio: '.$this->request->getPost('service').'<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha de Servicio: '. $this->request->getPost('date').'<br> Descripcion: '.$this->request->getPost('description').'<br>
             <br>
-            <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Log In TotalRomeroCleaning</a></p>
+            <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
               ';
         
         $email = \Config\Services::email();
