@@ -7,10 +7,12 @@ class Worklist extends BaseController
 
     public function worklist()
     {
+   
+
 
         $WorklistModel = new \App\Models\WorklistModel();
         $EmployeeModel = new \App\Models\EmployeeModel();
-        $data['worklist'] = $WorklistModel->orderBy('registrationdate', 'ASC')->findAll();
+        $data['worklist'] = $WorklistModel->where('status !=','3')->orderBy('registrationdate', 'ASC')->findAll();
         $data['employee'] = $EmployeeModel->find($this->request->getPost('employee'));
        return view('worklist/work',$data);
     }
@@ -55,12 +57,12 @@ class Worklist extends BaseController
         $resultado=$WorklistModel->update($idWorklist, $datos);
 
     if($resultado==1){
-            $to= $datosempleado['correoElectronico'];
+            $to= $datosempleado['correoElectronico'].',pauletteromero@totalromeroscleaning.com';
             $subject="New Service: ".$datosworklist['nameservice'];
             $message='
             <br>Detalles del servicio:<BR>Edificio: ******** <br>Servicio: '.$datosworklist['nameservice'].'<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha del Servicio: '.$datosworklist['fechaAseo'].'<br> Descripcion: '.$datosworklist['description'].'<br>
             <br>
-            <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
+            <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
               ';
         
         $email = \Config\Services::email();
@@ -130,7 +132,7 @@ class Worklist extends BaseController
             $message='
             <br>Detail Service:<BR>Edificio: ******** <br>Servicio: '.$this->request->getPost('service').'<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha de Servicio: '. $this->request->getPost('date').'<br> Descripcion: '.$this->request->getPost('description').'<br>
             <br>
-            <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
+            <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
               ';
         
         $email = \Config\Services::email();
@@ -159,5 +161,34 @@ class Worklist extends BaseController
      
     }
 
+public function worklistfinalizados(){
+    $WorklistModel = new \App\Models\WorklistModel();
+    $EmployeeModel = new \App\Models\EmployeeModel();
+    $session = \Config\Services::session();
+    $data['finalizados'] = $WorklistModel->where('status', '3')->findAll();
+    $data['employee'] = $EmployeeModel->where('id',$session->id);
+
+   return view('worklist/worklistfinalizados',$data);
+
+}
+
+
+public function eliminartemp($id){
+    $WorklistModel = new \App\Models\WorklistModel();
+    $data['worklist']=$WorklistModel->where('id', $id)->first();
+
+    return view('worklist/eliminartemp',$data);
+}
+
+public function eliminarworklist($id){
+
+    $WorklistModel = new \App\Models\WorklistModel();
+    $data['worklist']=$WorklistModel->where('id', $id)->first();
+
+        print('<h1>Se esta trabajando en este modulo, muchas gracias. </h1>');
+    die();
+    $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'No se notifico al usuario, error servidor']);
+    return redirect()->to('worklist'); 
+}
 }
 

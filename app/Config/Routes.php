@@ -39,6 +39,11 @@ $routes->get('/', 'Home::index');
 //$routes->get('dashboard', 'dashboard::dashboard');
 $routes->get('dashboard', 'worklist::worklist');
 $routes->get('worklist', 'worklist::worklist');
+$routes->get('worklistfinalizados', 'worklist::worklistfinalizados');
+$routes->get('eliminartemp/(:num)', 'worklist::eliminartemp/$1');
+$routes->get('eliminarworklist/(:num)', 'worklist::eliminarworklist/$1');
+
+
 $routes->get('calendar', 'calendar::calendar');
 $routes->get('employee', 'employee::employee'); 
 $routes->post('guardarEditar', 'employee::guardareditar');

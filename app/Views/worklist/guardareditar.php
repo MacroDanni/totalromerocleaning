@@ -21,16 +21,11 @@ New Work
 Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 
-
-
 <?= $this->section('content') ?>
 
 <form method="POST" action="<?= base_url('saveWorklist') ?>" class="row g-3">
 
 <?= csrf_field()?> 
-
-
-
 
 <div class="col-md-6">
 <select class="form-select" name="building" required aria-label="Default select example">
@@ -73,11 +68,13 @@ Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
   <option value="3">3</option>
   <option value="4">4</option>
   <option value="5">5</option>
+  <option value="5">6</option>
+  <option value="5">7</option>
+  <option value="5">8</option>
+  <option value="5">9</option>
   <option value="6">Todo</option>
 </select>
 </div>
-
-
 
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label"># Habitación</label>

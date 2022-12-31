@@ -10,15 +10,15 @@ Total Romeros Cleaning
 <?= $this->endSection() ?>
 
 <?= $this->section('titlePage') ?>
-Portal Lista de Trabajo
+Portal Trabajos Finalizados
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-Lista de trabajo
+trabajos Finalizados
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
-<a href="<?= base_url('guardareditar') ?>" type="button" class="btn btn-outline-success">Nuevo Trabajo </a> 
+
  <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
@@ -36,38 +36,37 @@ Lista de trabajo
                     <th>#</th>
                     <th>Edificio</th>
                     <th># Edificio</th>
-                    <th># Habitación</th>
+                    <th># Habitacion</th>
                     <th>Fecha</th>
                     <th>Asignado a</th>
                     <th>Servicio</th>
                     <th>Estatus</th>
-                    <th>Eliminar</th>
                     
                   </tr>
                   </thead>
                   <tbody>
-                  <?php if ($worklist) :?>
-                <?php foreach($worklist as $worklist): ?>
+                  <?php if ($finalizados) :?>
+                <?php foreach($finalizados as $finalizados): ?>
                  
                 <tr>                    
-                    <td><?=$worklist['id'] ?></td>
-                    <td><?=$worklist['nameBuilding']; ?>
+                    <td><?=$finalizados['id'] ?></td>
+                    <td><?=$finalizados['nameBuilding']; ?>
                  
                   </td>
-                    <td><?php if($worklist['numberBuilding']==6){echo 'All';} else{ echo $worklist['numberBuilding'];} ?></td>
-                    <td><?=$worklist['numroom'] ?></td>
-                    <td><?=date("m/d/Y", strtotime($worklist['fechaAseo'])) ?></td>
+                    <td><?php if($finalizados['numberBuilding']==6){echo 'All';} else{ echo $finalizados['numberBuilding'];} ?></td>
+                    <td><?=$finalizados['numroom'] ?></td>
+                    <td><?=date("m/d/Y", strtotime($finalizados['fechaAseo'])) ?></td>
                     <td>
                     
                 
-                                      <input type="hidden" name="idworklist" value="<?=$worklist['id'] ?>">
+                                      <input type="hidden" name="idworklist" value="<?=$finalizados['id'] ?>">
                
                   <?php
-                    if($worklist['status']==4){
+                    if($finalizados['status']==4){
                       ?>
                      <form method="POST" action="<?= base_url('salvarcancelado'); ?>" class="row g-3">
                   <?= csrf_field()?> 
-                                      <input type="hidden" name="id" value="<?=$worklist['id'] ?>">
+                                      <input type="hidden" name="id" value="<?=$finalizados['id'] ?>">
                                             <div class="col-md-12">
                                                         <select class="form-select" name="nickename" required aria-label="Default select example">
                                                           <option selected>Selecciona Empleado</option>
@@ -83,29 +82,21 @@ Lista de trabajo
                       <?php
                     }
                     else{
-                        echo  $worklist['nameEmployee'];
+                        echo  $finalizados['nameEmployee'];
                     }
                     ?>
                   </td>
                   
-                  <td><?=$worklist['nameservice'] ?></td>
+                  <td><?=$finalizados['nameservice'] ?></td>
                     <td><?php 
-                    if($worklist['status']==0){ echo '<p class="btn btn-warning btn-sm">En espera</p>';}elseif($worklist['status']==1){ echo '<p class="btn btn-success btn-sm">Aceptado</p>';}elseif($worklist['status']==2){ echo '<p class="btn btn-success btn-sm">Limpiando</p>';} elseif($worklist['status']==3){echo '<p class="btn btn-success btn-sm">Finalizado</p>';}elseif($worklist['status']==4){echo '<p class="btn btn-danger btn-sm">Cancelado</p>';} else{echo 'error';};
+                    if($finalizados['status']==0){ echo '<p class="btn btn-warning btn-sm">En espera</p>';}elseif($finalizados['status']==1){ echo '<p class="btn btn-success btn-sm">Aceptado</p>';}elseif($finalizados['status']==2){ echo '<p class="btn btn-success btn-sm">Limpiando</p>';} elseif($finalizados['status']==3){echo '<p class="btn btn-success btn-sm">Finalizado</p>';}elseif($finalizados['status']==4){echo '<p class="btn btn-danger btn-sm">Cancelado</p>';} else{echo 'error';};
                     ?></td>
                     
-                    <td>
-                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-                    <a href="<?= base_url('eliminartemp/'.$worklist['id'].'') ?>" type="button" class="btn btn-danger">Eliminar</a>
-                    <!--<button type="button" class="btn btn-warning">Middle</button>-->
-                  </div>
-                    </td>
                    
-               
+                </tr>
                 <?php endforeach ?>
                 <?php endif  ?>
-                </tr>
-
-
+                  
                   </tbody>
                   
                 </table>

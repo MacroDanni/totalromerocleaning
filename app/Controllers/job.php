@@ -32,7 +32,7 @@ class Job extends BaseController
                 'status' => "1",
                 'dateagreetoclean' => date('Y-m-d H:i:s'),
             ];
-            $data= $WorklistModel->where('id', $id)->first();
+          $data= $WorklistModel->where('id', $id)->first();
           $resultado=$WorklistModel->update($id,$datos);
           $session = \Config\Services::session();
           $to= 'pauletteromero@totalromeroscleaning.com,'.$session->correoElectronico;
@@ -45,7 +45,7 @@ class Job extends BaseController
           <br><h3>
           <br>Detalle del servicio:<BR>Building: '.$data['nameBuilding'].' <br>Servicio: '.$data['nameservice'].'<br># Edificio: '.$data['numberBuilding'].' <br># Habitacion:  '.$data['numroom'].' <br>Fecha de Servicio: '.$data['fechaAseo'].'<br> Descripcion: '.$data['description'].'<br>
           <br>
-          <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Inicio de sesion en totalRomeroCleaning</a></p>
+          <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Inicio de sesion en TotalRomeroCleaning</a></p>
            </h3> ';
       
       $email = \Config\Services::email();
@@ -90,7 +90,7 @@ class Job extends BaseController
           <br><h3>
           <br>Detalle del servicio:<BR>Building: ******** <br>Servicio: '.$data['nameservice'].'<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha de Servicio: '.$data['fechaAseo'].'<br> Descripcion: '.$data['description'].'<br>
           <br>
-          <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Inicio de sesion en totalRomeroCleaning</a></p>
+          <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Inicio de sesion en totalRomeroCleaning</a></p>
             </h3>';
       
       $email = \Config\Services::email();

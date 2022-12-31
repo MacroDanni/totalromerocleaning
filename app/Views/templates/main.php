@@ -94,21 +94,62 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pie-chart-fill" viewBox="0 0 16 16">
   <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"/>
 </svg>
-              <p>
-               Dashboard
+               <p>
+                Dashboard
+              
               </p>
             </a>
+           
           </li>
+          
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="<?= base_url('worklist') ?>" class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-check" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
 </svg>
               <p>
                 Lista de Trabajo
+                
               </p>
+              <i class="right fas fa-angle-left"></i>
             </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('worklist') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>En proceso
+                    
+                  </p>
+                </a>
+              </li>
+             
+          </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('worklistfinalizados') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Finalizados
+                  </p>
+                </a>
+              </li>
+          </ul>
+
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('guardareditar') ?>" class="nav-link">
+                 
+                &nbsp;   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+</svg>
+                  <p>          
+                  &nbsp;&nbsp; Nuevo Trabajo</p>
+                </a>
+              </li>
+          </ul>
+   
           </li>
 
             <li class="nav-item">
