@@ -19,6 +19,7 @@ class Cleaningsupply extends BaseController
             $ProductModel = new \App\Models\ProductModel();
             $data['cleaningsupply'] = $ProductModel->where('id', $id)->first();
             return view('cleaningsupply/newcleaningsupply',$data);
+            
         }
 
         public function newcleaningsupply(){

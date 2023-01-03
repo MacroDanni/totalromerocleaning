@@ -10,7 +10,7 @@ class WorklistModel extends Model
 	protected $table='worklist';
 	protected $primaryKey='id';
 	protected $allowedFields=['id_building','id_business','id_employee','id_service','nameservice','nameBuilding','nameBusiness','nameEmployee','status','fechaAseo','registrationdate','assigned'
-	,'description','eliminarEstatus','numroom','numberBuilding','dateagreetoclean','dateinprocesscleaning','cleaningfinished','datejobfinished'];
+	,'description','eliminarEstatus','numroom','numberBuilding','dateagreetoclean','dateinprocesscleaning','cleaningfinished','datejobfinished','estatusimagen'];
 
 }
 

@@ -19,7 +19,7 @@ class savepasswordemployee extends BaseController
                 ];
                 $resultado=$EmployeeModel->update($id, $datos);
 
-                $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'La contraseña se cambio y guardo satisfactoriamente!']);
+                $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'La contraseña se cambio y guardo satisfactoriamente!']);
                  return redirect()->to('dashboard');
         }
 

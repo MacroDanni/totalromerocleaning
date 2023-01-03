@@ -42,10 +42,11 @@ $routes->get('worklist', 'worklist::worklist');
 $routes->get('worklistfinalizados', 'worklist::worklistfinalizados');
 $routes->get('eliminartemp/(:num)', 'worklist::eliminartemp/$1');
 $routes->get('eliminarworklist/(:num)', 'worklist::eliminarworklist/$1');
+$routes->post('verfotos', 'worklist::verfotos');
 
 
 $routes->get('calendar', 'calendar::calendar');
-$routes->get('employee', 'employee::employee'); 
+$routes->get('employee', 'employee::employee');
 $routes->post('guardarEditar', 'employee::guardareditar');
 $routes->get('deleteEmployee/(:num)', 'employee::delete/$1');
 $routes->post('guardaremployee', 'employee::guardaremployee');
@@ -53,7 +54,7 @@ $routes->get('editaremployee/(:num)', 'employee::editaremployee/$1');
 $routes->get('altaemployee', 'employee::altaemployee');
 $routes->get('guardareditar', 'worklist::guardareditar');
 
-$routes->post('salvarcancelado', 'worklist::salvarcancelado'); 
+$routes->post('salvarcancelado', 'worklist::salvarcancelado');
 
 
 
@@ -82,19 +83,19 @@ $routes->get('canceljob/(:num)', 'job::canceljob/$1');
 $routes->get('acceptjob/(:num)', 'job::acceptjob/$1');
 $routes->get('cleaningfinished/(:num)', 'job::cleanedup/$1');
 $routes->get('startjob/(:num)', 'job::startclean/$1');
-$routes->get('jobfinished/(:num)', 'job::jobfinished/$1');
+$routes->post('jobfinished', 'job::jobfinished');
 
 
-$routes->get('cleaningsupplyuser', 'cleaningsupplyuser::cleaningsupplyuser'); 
-$routes->get('newcleaningsupplyuser', 'cleaningsupplyuser::newcleaningsupplyuser'); 
+$routes->get('cleaningsupplyuser', 'cleaningsupplyuser::cleaningsupplyuser');
+$routes->get('newcleaningsupplyuser', 'cleaningsupplyuser::newcleaningsupplyuser');
 $routes->post('savecleaningsupply', 'cleaningsupply::savecleaningsupply');
 
 
 $routes->post('solicitando', 'cleaningsupplyuser::solicitando');
 $routes->get('cleaningsupply', 'cleaningsupply::cleaningsupply');
-$routes->get('newcleaningsupply', 'cleaningsupply::newcleaningsupply'); 
-$routes->get('editcleaningsupply/(:num)', 'cleaningsupply::editcleaningsupply/$1'); 
-$routes->post('saveedit/(:num)', 'cleaningsupply::saveedit/$1'); 
+$routes->get('newcleaningsupply', 'cleaningsupply::newcleaningsupply');
+$routes->get('editcleaningsupply/(:num)', 'cleaningsupply::editcleaningsupply/$1');
+$routes->post('saveedit/(:num)', 'cleaningsupply::saveedit/$1');
 
 
 /*

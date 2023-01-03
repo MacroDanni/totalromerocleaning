@@ -37,6 +37,7 @@ Lista de Suministros
                 <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Tipo</th>
+                    <th scope="col">Fecha Solicitud</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -47,6 +48,7 @@ Lista de Suministros
                 <tr>                    
                     <td><?=$Product['nombre']?></td>
                     <td><?=$Product['tipo'] ?></td>
+                    <td><?=$Product['fecharegistro'] ?></td>
                     <td>
                          <a href="<?= base_url('editcleaningsupply/'.$Product['id']); ?>" class="btn btn-outline-warning">Editar</a>
                     </td>

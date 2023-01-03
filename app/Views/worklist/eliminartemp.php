@@ -22,6 +22,9 @@ Eliminar Trabajo
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+
+<h1>Estas seguro de eliminar el trabajo ?</h1>
+<hr><br>
 <div  class="row g-3">
 <div class="col-md-4">
     <label for="inputEmail4" class="form-label">Building</label>

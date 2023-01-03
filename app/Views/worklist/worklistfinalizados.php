@@ -40,6 +40,7 @@ trabajos Finalizados
                     <th>Fecha</th>
                     <th>Asignado a</th>
                     <th>Servicio</th>
+                    <th>Fotos</th>
                     <th>Estatus</th>
                     
                   </tr>
@@ -50,44 +51,30 @@ trabajos Finalizados
                  
                 <tr>                    
                     <td><?=$finalizados['id'] ?></td>
-                    <td><?=$finalizados['nameBuilding']; ?>
-                 
-                  </td>
+                    <td><?=$finalizados['nameBuilding']; ?></td>
                     <td><?php if($finalizados['numberBuilding']==6){echo 'All';} else{ echo $finalizados['numberBuilding'];} ?></td>
                     <td><?=$finalizados['numroom'] ?></td>
                     <td><?=date("m/d/Y", strtotime($finalizados['fechaAseo'])) ?></td>
                     <td>
-                    
-                
-                                      <input type="hidden" name="idworklist" value="<?=$finalizados['id'] ?>">
-               
-                  <?php
-                    if($finalizados['status']==4){
-                      ?>
-                     <form method="POST" action="<?= base_url('salvarcancelado'); ?>" class="row g-3">
-                  <?= csrf_field()?> 
-                                      <input type="hidden" name="id" value="<?=$finalizados['id'] ?>">
-                                            <div class="col-md-12">
-                                                        <select class="form-select" name="nickename" required aria-label="Default select example">
-                                                          <option selected>Selecciona Empleado</option>
-                                                        <?php if ($employee) :?>
-                                                                        <?php foreach($employee as $employee): ?>
-                                                                          <option value="<?= $employee['nickename'] ?>"> <?=$employee['nombre'].' '.$employee['apellidoPaterno'].' '.$employee['apellidoMaterno'] ?></option>
-                                                                <?php endforeach ?>
-                                                                <?php endif ?>
-                                                </select>
-                                                </div>
-                                                <button type="submit" class="btn btn-success btn-sm">Guardar</button>
-                          </form>
-                      <?php
-                    }
-                    else{
-                        echo  $finalizados['nameEmployee'];
-                    }
+                        <input type="hidden" name="idworklist" value="<?=$finalizados['id'] ?>">
+                        <?=  $finalizados['nameEmployee'] ?>
+                  </td>
+                  <td><?=$finalizados['nameservice'] ?></td>
+                  <td>
+                    <?php
+                        if($finalizados['estatusimagen']==0){ }
+                        else{
+                            ?>
+                              <form method="POST" action="<?= base_url('verfotos') ?>">
+                                  <input type="hidden" name="idworklist" value="<?=$finalizados['id'] ?>">
+                                  <input type="hidden" name="nickname" value="<?=$finalizados['nameEmployee'] ?>">
+                                  <button type="submit" class="btn btn-warning btn-sm"> Ver Fotos</button>
+                              </form>
+
+                        <?php
+                        }
                     ?>
                   </td>
-                  
-                  <td><?=$finalizados['nameservice'] ?></td>
                     <td><?php 
                     if($finalizados['status']==0){ echo '<p class="btn btn-warning btn-sm">En espera</p>';}elseif($finalizados['status']==1){ echo '<p class="btn btn-success btn-sm">Aceptado</p>';}elseif($finalizados['status']==2){ echo '<p class="btn btn-success btn-sm">Limpiando</p>';} elseif($finalizados['status']==3){echo '<p class="btn btn-success btn-sm">Finalizado</p>';}elseif($finalizados['status']==4){echo '<p class="btn btn-danger btn-sm">Cancelado</p>';} else{echo 'error';};
                     ?></td>

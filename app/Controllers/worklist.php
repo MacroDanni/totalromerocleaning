@@ -149,7 +149,7 @@ class Worklist extends BaseController
 
                    
                 $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Se notifico al usuario correctamente']);
-                return redirect()->to('worklist'); 
+                return redirect()->to('guardareditar'); 
             }
             else{
 
@@ -182,13 +182,38 @@ public function eliminartemp($id){
 
 public function eliminarworklist($id){
 
-    $WorklistModel = new \App\Models\WorklistModel();
+    $WorklistModel = new \App\Models\WorklistModel(); 
     $data['worklist']=$WorklistModel->where('id', $id)->first();
+    $resultado=$WorklistModel->delete(['id' => $id]);
 
-        print('<h1>Se esta trabajando en este modulo, muchas gracias. </h1>');
-    die();
-    $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'No se notifico al usuario, error servidor']);
-    return redirect()->to('worklist'); 
+
+    if ($resultado > 0) {
+        $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Se a eliminado satisfactoriamente ']);
+        return redirect()->to('worklist');
+    } else {
+        $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'Error, no se pudo eliminar, contactar al administrador']);
+    
+        return redirect()->to('worklist');
+    }
 }
+
+public function verfotos(){
+
+    $WorklistModel = new \App\Models\WorklistModel();
+    $EmployeeModel = new \App\Models\EmployeeModel();
+    $WorklistimagenesModel = new \App\Models\WorklistimagenesModel();
+    $session = \Config\Services::session();
+
+    $data['finalizados'] = $WorklistModel->where('id',  $this->request->getPost('idworklist'))->first();
+    $data['employee'] = $EmployeeModel->where('nickename', $this->request->getPost('nickname'))->first();
+    $data['fotos'] = $WorklistimagenesModel->where('idTrabajo', $this->request->getPost('idworklist'))->findAll();
+
+    return view('worklist/verfotos',$data);
+
+
+}
+
+
+
 }
 
