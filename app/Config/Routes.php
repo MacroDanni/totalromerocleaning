@@ -108,11 +108,22 @@ $routes->get('newcleaningsupplyuser', 'cleaningsupplyuser::newcleaningsupplyuser
 $routes->post('savecleaningsupply', 'cleaningsupply::savecleaningsupply');
 
 
+
 $routes->post('solicitando', 'cleaningsupplyuser::solicitando');
 $routes->get('cleaningsupply', 'cleaningsupply::cleaningsupply');
 $routes->get('newcleaningsupply', 'cleaningsupply::newcleaningsupply');
 $routes->get('editcleaningsupply/(:num)', 'cleaningsupply::editcleaningsupply/$1');
 $routes->post('saveedit/(:num)', 'cleaningsupply::saveedit/$1');
+
+/* Modulo de servicios*/
+
+$routes->get('servicios','servicio::servicios');
+$routes->get('crearservicio','servicio::crearservicio');
+$routes->get('editarservicio/(:num)','servicio::editarservicio/$1');
+$routes->post('guardareditarservicio','servicio::guardareditarservicio');
+$routes->post('nuevoservicio','servicio::nuevoservicio');
+$routes->get('eliminarserviciotemp/(:num)','servicio::eliminarserviciotemp/$1');
+$routes->get('eliminarservicio/(:num)','servicio::eliminarservicio/$1');
 
 
 /*

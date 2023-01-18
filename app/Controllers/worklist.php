@@ -20,12 +20,12 @@ class Worklist extends BaseController
     public function guardareditar()
     {
 
-        $ServicesModel = new \App\Models\ServicesModel();
+        $ServiciosModel = new \App\Models\ServiciosModel();
         $BuildingModel = new \App\Models\BuildingModel();
         $BusinessModel = new \App\Models\BusinessModel();
         $EmployeeModel = new \App\Models\EmployeeModel();
 
-        $data1['services'] = $ServicesModel->orderBy('name', 'ASC')->findAll();
+        $data1['services'] = $ServiciosModel->orderBy('name', 'ASC')->findAll();
         $data2['building'] = $BuildingModel->orderBy('property', 'ASC')->findAll();
         $data3['business'] = $BusinessModel->orderBy('nombre', 'ASC')->findAll();
         $data4['employee'] = $EmployeeModel->orderBy('nombre', 'ASC')->findAll();

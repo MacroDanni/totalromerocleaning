@@ -18,9 +18,9 @@ Trabajos Finalizados
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
-
 <?=  date('l jS \of F Y H:i:s');?>
 <?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
 
 <div class="card-body">

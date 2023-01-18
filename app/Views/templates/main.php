@@ -182,6 +182,30 @@
             </a>
             </li>
 
+            <li class="nav-item">
+            <a href="<?= base_url('servicios') ?>" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-heart" viewBox="0 0 16 16">
+  <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z"/>
+  <path d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4h-8.5Zm0 1H7.5v3h-6l2.25-3ZM8.5 4V1h3.75l2.25 3h-6ZM15 5v10H1V5h14Z"/>
+</svg>
+              <p>
+              Servicios
+              </p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a href="<?= base_url('cleaningsupply') ?>" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bucket" viewBox="0 0 16 16">
+  <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527zm9.892 1-1.286 8.574a.5.5 0 0 1-.494.426H4.36a.5.5 0 0 1-.494-.426L2.58 6h10.838z"/>
+</svg>
+              <p>
+              Suministros
+              </p>
+            </a>
+            </li>
+
+
             <hr>
 
             <li class="nav-item">
@@ -232,16 +256,6 @@
 
           
 
-            <li class="nav-item">
-            <a href="<?= base_url('cleaningsupply') ?>" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bucket" viewBox="0 0 16 16">
-  <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527zm9.892 1-1.286 8.574a.5.5 0 0 1-.494.426H4.36a.5.5 0 0 1-.494-.426L2.58 6h10.838z"/>
-</svg>
-              <p>
-              Suministros
-              </p>
-            </a>
-            </li>
 
             <li class="nav-item">
             <a href="<?= base_url('contact') ?>" class="nav-link">
@@ -415,7 +429,7 @@
 
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": true, "searching": true,
-      "buttons": ["copy", "excel", "pdf", "print"]
+      "order": [ 0, "asc" ]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
      $("#example2").DataTable({
