@@ -13,6 +13,11 @@
   <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <style>
+   body{
+    background-image:url('<?= base_url('dist/img/boxed-bg.png')?>');
+   }
+  </style>
 </head>
 <body class="hold-transition login-page">
 

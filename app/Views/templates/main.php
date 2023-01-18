@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css') ?>">
-
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('dist/css/adminlte.min.css');?>">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  
@@ -407,11 +407,12 @@
 <script src="<?= base_url('plugins/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
 <script src="<?= base_url('plugins/datatables-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?= base_url('plugins/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <script src='<?= base_url('dist/js/index.global.js') ?>'></script>
-
 <script>
   $(function () {
+
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": true, "searching": true,
       "buttons": ["copy", "excel", "pdf", "print"]
@@ -428,9 +429,42 @@
       "buttons": ["copy", "excel", "pdf", "print"],
       "order": [ 4, "desc" ]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+  
 </script>
 
 
+<script>
+$( function() {
+  var from = $( "#fechadesde" )
+      .datepicker({
+        dateFormat: "yy-mm-dd",
+        changeMonth: true
+      })
+      .on( "change", function() {
+        to.datepicker( "option", "minDate", getDate( this ) );
+      }),
+    to = $( "#fechahasta" ).datepicker({
+      dateFormat: "yy-mm-dd",
+      changeMonth: true
+    })
+    .on( "change", function() {
+      from.datepicker( "option", "maxDate", getDate( this ) );
+    });
+
+  function getDate( element ) {
+    var date;
+    var dateFormat = "yy-mm-dd";
+    try {
+      date = $.datepicker.parseDate( dateFormat, element.value );
+    } catch( error ) {
+      date = null;
+    }
+
+    return date;
+  }
+});
+</script>
 
 
 

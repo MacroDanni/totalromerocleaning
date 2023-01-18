@@ -23,6 +23,7 @@ Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
 
 <?= $this->section('content') ?>
 
+
 <?php if ($flag = session()->getFlashdata('flag')) {  ?>
         <div class="alert alert-<?= $flag['type']; ?>" role="alert">
             <strong><?= $flag['msg']; ?></strong>
@@ -88,8 +89,8 @@ Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
   </div>
 
   <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Fecha</label>
-    <input type="date" name="date" required class="form-control" multiple id="date">
+  <label for="inputEmail4" class="form-label">Desde:</label> <input type="text" id="fechadesde" name="fechadesde" class="form-control" required>
+  <label for="inputEmail4" class="form-label">Hasta</label> <input type="text"  id="fechahasta" name="fechahasta" class="form-control" >
   </div>
 
 

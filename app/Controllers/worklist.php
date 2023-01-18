@@ -101,8 +101,60 @@ class Worklist extends BaseController
         $WorklistModel = new \App\Models\WorklistModel();
 
 
+        $fechadesde = strtotime($this->request->getPost('fechadesde'));
+        $fechahasta = strtotime($this->request->getPost('fechahasta'));
 
-        $newWorklist = [
+        
+        if ($fechadesde > 0 && $fechahasta > 0) {
+         
+            $dia = 86400;
+            for ($i = $fechadesde; $i <= $fechahasta; $i += $dia) {
+                $fecha = date("Y-m-d", $i);
+    
+    
+                $resultado = $WorklistModel->insert([
+                    // 'id_building' => $this->request->getPost('building'),
+                    //   'id_business' => $this->request->getPost('business'),
+                    //   'id_employee' => $this->request->getPost('employee'),
+                    //   'id_service' => $this->request->getPost('services'),
+                    'nameBuilding' => ucfirst($this->request->getPost('building')),
+                    'nameBusiness' => 'TotalRomerosCleaning',
+                    'nameEmployee' => $this->request->getPost('employee'),
+                    'nameservice' => $this->request->getPost('service'),
+                    'numroom' => $this->request->getPost('numroom'),
+                    'fechaAseo' => $fecha,
+                    'description' => $this->request->getPost('description'),
+                    'numberBuilding' => $this->request->getPost('numberBuilding'),
+                    'status' => "0",
+                ]);
+                if ($resultado == 0) {
+                    $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'Error de conexion al servidor, revise que fechas se cargaron y vuelva a cargar porfavor.']);
+                    return redirect()->to('worklist');
+                }
+                    $datos = $EmployeeModel->where('nickename', $this->request->getPost('employee'))->first();
+                    $to = $datos['correoElectronico'];
+                    $subject = "Nuevo Servicio: " . $this->request->getPost('service');
+                    $message = '
+                    <br>Detail Service:<BR>Edificio: ******** <br>Servicio: ' . $this->request->getPost('service') . '<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha de Servicio: ' . $this->request->getPost('date') . '<br> Descripcion: ' . $this->request->getPost('description') . '<br>
+                    <br>
+                    <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
+                      ';
+    
+                    $email = \Config\Services::email();
+                    $email->setTo($to);
+                    $email->setFrom('notification@totalromeroscleaning.com', 'Notification - TotalRomerosCleaning');
+    
+                    $email->setSubject($subject);
+                    $email->setMessage($message);
+    
+                    $respuesta = $email->send();
+                
+            }
+            $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Se notifico al usuario correctamente']);
+            return redirect()->to('guardareditar');
+        }
+        
+        $resultado = $WorklistModel->insert([
             // 'id_building' => $this->request->getPost('building'),
             //   'id_business' => $this->request->getPost('business'),
             //   'id_employee' => $this->request->getPost('employee'),
@@ -112,29 +164,21 @@ class Worklist extends BaseController
             'nameEmployee' => $this->request->getPost('employee'),
             'nameservice' => $this->request->getPost('service'),
             'numroom' => $this->request->getPost('numroom'),
-            'fechaAseo' => $this->request->getPost('date'),
+            'fechaAseo' => $this->request->getPost('fechadesde'),
             'description' => $this->request->getPost('description'),
             'numberBuilding' => $this->request->getPost('numberBuilding'),
             'status' => "0",
-        ];
-
-        $dats = $EmployeeModel->where('nickename', $this->request->getPost('employee'))->first();
+        ]);
 
 
-        $wasSuccess = $WorklistModel->insert($newWorklist);
-
-        $newRecord = [
-            'id_worklist' => $WorklistModel->getInsertID(),
-            'id_employee' => $this->request->getPost('employee'),
-        ];
-
-        $to = $dats['correoElectronico'];
+        $datos = $EmployeeModel->where('nickename', $this->request->getPost('employee'))->first();
+        $to = $datos['correoElectronico'];
         $subject = "Nuevo Servicio: " . $this->request->getPost('service');
         $message = '
-            <br>Detail Service:<BR>Edificio: ******** <br>Servicio: ' . $this->request->getPost('service') . '<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha de Servicio: ' . $this->request->getPost('date') . '<br> Descripcion: ' . $this->request->getPost('description') . '<br>
-            <br>
-            <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
-              ';
+        <br>Detail Service:<BR>Edificio: ******** <br>Servicio: ' . $this->request->getPost('service') . '<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha de Servicio: ' . $this->request->getPost('date') . '<br> Descripcion: ' . $this->request->getPost('description') . '<br>
+        <br>
+        <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
+          ';
 
         $email = \Config\Services::email();
         $email->setTo($to);
@@ -144,18 +188,16 @@ class Worklist extends BaseController
         $email->setMessage($message);
 
         $respuesta = $email->send();
-
-
         if ($respuesta == 1) {
-
 
             $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Se notifico al usuario correctamente']);
             return redirect()->to('guardareditar');
-        } else {
-
-            $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'No se notifico al usuario, error servidor']);
-            return redirect()->to('worklist');
         }
+
+        $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'No se notifico correctamente']);
+                return redirect()->to('worklist');
+        
+        
 
 
 
@@ -209,20 +251,20 @@ class Worklist extends BaseController
         $FotosModel = new \App\Models\FotosModel();
         $session = \Config\Services::session();
 
-        $data_arrayantes = array('idworklist'=> $this->request->getPost('idworklist'), 'estatus' => 'antes');
-        $data_arraydespues = array('idworklist'=> $this->request->getPost('idworklist'), 'estatus' => 'despues');
+        $data_arrayantes = array('idworklist' => $this->request->getPost('idworklist'), 'estatus' => 'antes');
+        $data_arraydespues = array('idworklist' => $this->request->getPost('idworklist'), 'estatus' => 'despues');
         $data['antes'] = $FotosModel->where($data_arrayantes)->findAll();
         $data['despues'] = $FotosModel->where($data_arraydespues)->findAll();
 
 
-      
+
 
         return view('worklist/verfotos', $data);
 
 
     }
 
-    
+
 
 
 
