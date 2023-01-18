@@ -14,7 +14,7 @@ Portal Trabajos Finalizados
 <?= $this->endSection() ?>
 
 <?= $this->section('tituloContent') ?>
-trabajos Finalizados
+Trabajos Finalizados
 <?= $this->endSection() ?>
 
 <?= $this->section('subTitlecontent') ?>
@@ -41,7 +41,6 @@ trabajos Finalizados
                     <th>Asignado a</th>
                     <th>Servicio</th>
                     <th>Fotos</th>
-                    <th>Estatus</th>
                     
                   </tr>
                   </thead>
@@ -68,16 +67,14 @@ trabajos Finalizados
                               <form method="POST" action="<?= base_url('verfotos') ?>">
                                   <input type="hidden" name="idworklist" value="<?=$finalizados['id'] ?>">
                                   <input type="hidden" name="nickname" value="<?=$finalizados['nameEmployee'] ?>">
-                                  <button type="submit" class="btn btn-warning btn-sm"> Ver Fotos</button>
+                                  <button type="submit" class="btn btn-warning btn-sm">Ver Fotos</button>
                               </form>
 
                         <?php
                         }
                     ?>
                   </td>
-                    <td><?php 
-                    if($finalizados['status']==0){ echo '<p class="btn btn-warning btn-sm">En espera</p>';}elseif($finalizados['status']==1){ echo '<p class="btn btn-success btn-sm">Aceptado</p>';}elseif($finalizados['status']==2){ echo '<p class="btn btn-success btn-sm">Limpiando</p>';} elseif($finalizados['status']==3){echo '<p class="btn btn-success btn-sm">Finalizado</p>';}elseif($finalizados['status']==4){echo '<p class="btn btn-danger btn-sm">Cancelado</p>';} else{echo 'error';};
-                    ?></td>
+                   
                     
                    
                 </tr>

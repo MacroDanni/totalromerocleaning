@@ -395,7 +395,7 @@ class App extends BaseConfig
      *
      * @var int
      */
-    public $CSRFExpire = 7200;
+    public $CSRFExpire = 3600;
 
     /**
      * --------------------------------------------------------------------------

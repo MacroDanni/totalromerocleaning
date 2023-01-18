@@ -23,7 +23,13 @@ Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
 
 <?= $this->section('content') ?>
 
-<form method="POST" action="<?= base_url('saveWorklist') ?>" class="row g-3">
+<?php if ($flag = session()->getFlashdata('flag')) {  ?>
+        <div class="alert alert-<?= $flag['type']; ?>" role="alert">
+            <strong><?= $flag['msg']; ?></strong>
+        </div>
+        <?php } ?>
+        
+<form method="POST" action="<?= base_url('saveWorklist') ?>"  enctype="multipart/form-data" class="row g-3">
 
 <?= csrf_field()?> 
 
@@ -83,7 +89,7 @@ Add Event  -- <?=  date('l jS \of F Y H:i:s');?>
 
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Fecha</label>
-    <input type="date" name="date" required class="form-control" id="date">
+    <input type="date" name="date" required class="form-control" multiple id="date">
   </div>
 
 

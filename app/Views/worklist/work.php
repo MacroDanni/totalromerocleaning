@@ -30,7 +30,7 @@ Lista de trabajo
         </div>
         <?php } ?>
         
-                <table id="example3"  class="table table-hover table-striped">
+                <table id="example3"  class="table table-hover table-striped ">
                   <thead>
                   <tr>
                     <th>#</th>

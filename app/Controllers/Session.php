@@ -12,6 +12,7 @@ class Session extends BaseController
         if ($this->request->getMethod() == 'post') {
 
         $session = session();
+        $session->set([]);
         $EmployeeModel = new \App\Models\EmployeeModel();
         $email= $this->request->getPost('email');
 
@@ -42,11 +43,11 @@ class Session extends BaseController
                
                 if($query['tipo']=='Admin'){
                     $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Welcome: '.$query['nombre'].' '.$query['apellidoPaterno'].' '.$query['apellidoMaterno']]);
-                    return redirect()->to('dashboard');
+                    return redirect()->to('calendarmanager');
                 }
 
                 $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => 'Welcome: '.$query['nombre'].' '.$query['apellidoPaterno'].' '.$query['apellidoMaterno']]);
-                return redirect()->to('job');
+                return redirect()->to('calendar');
                 
               
                 //return view('dashboard/dashboard',$data);
@@ -93,7 +94,6 @@ class Session extends BaseController
 
     public function logout(){
         $session = session();
-        $session_destroy;
         $session_data = [
             'id' => "",
             'nikename' => "",

@@ -92,9 +92,6 @@ class employee extends BaseController
 
     }
 
-
-
-    
     public function editaremployee($id)
     {
 
@@ -171,7 +168,68 @@ class employee extends BaseController
       
     }
 
+public function resetpassword($id){
 
+
+ 
+    $session = \Config\Services::session();
+    $EmployeeModel = new \App\Models\EmployeeModel();
+    $key = "";
+    $pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+    $max = strlen($pattern)-1;
+    for($i = 0; $i < 8; $i++){
+        $key .= substr($pattern, mt_rand(0,$max), 1);
+    }
+
+    $resultado=$EmployeeModel->update($id, [
+        'contrasena'=>  $key,
+        'statuspassword'=>'0'
+        ]);
+
+  
+        if ($resultado == 1) {
+        
+            $data = $EmployeeModel->where('id', $id)->first();
+            
+            $to=$data['correoElectronico'];
+            $subject='Password Restablecido.';
+
+
+            $message='<h2>Restabler contraseña de Total Romeros Cleaning</h2>
+            <DIV>Hola '.$data['nickename'].' , por favor inglesa la contraseña que se muestra mas adelante con este mismo correo.</DIV>
+            <br>
+            Email: '. $data['correoElectronico'].'<br>
+            Password(temp): <h3>'.$key.'</h3>
+            <br>
+            una vez que coloque la nueva contraseña,le mostrara una ventana donde tiene que cambiar la contraseña.
+            Gracias y excelente dia! 
+            <br> <br>
+            <a class="btn btn-success" href="http://totalromeroscleaning.com/" ?> Inicia sesion aqui!</a>
+            ';
+        
+            $email = \Config\Services::email();
+            $email->setTo($to);
+            $email->setFrom('notification@totalromeroscleaning.com', 'Notification - TotalRomerosCleaning');
+            
+            $email->setSubject($subject);
+            $email->setMessage($message);
+            $respuesta=$email->send();
+
+
+            if($respuesta==1){
+                
+           
+            $this->session->setFlashdata('flag', ['type' => 'success', 'msg' => $data['nickename']. ', ' . 'Se mando la nueva clave al usuario']);
+            return redirect()->to('employee');       
+
+            }
+            else{
+            $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'No se mando la clave por email, vuelve a restablecerlo por favor.']);
+            return redirect()->to('employee'); 
+            }
+        }
+
+}
 
 
     

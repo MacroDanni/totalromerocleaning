@@ -36,6 +36,9 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
+
+
 //$routes->get('dashboard', 'dashboard::dashboard');
 $routes->get('dashboard', 'worklist::worklist');
 $routes->get('worklist', 'worklist::worklist');
@@ -43,6 +46,12 @@ $routes->get('worklistfinalizados', 'worklist::worklistfinalizados');
 $routes->get('eliminartemp/(:num)', 'worklist::eliminartemp/$1');
 $routes->get('eliminarworklist/(:num)', 'worklist::eliminarworklist/$1');
 $routes->post('verfotos', 'worklist::verfotos');
+$routes->get('fotosantes/(:num)', 'job::fotosantes/$1');
+
+$routes->post('guardarfotosantes', 'job::guardarfotosantes');
+
+
+$routes->get('calendarmanager', 'calendar::calendarmanager');
 
 
 $routes->get('calendar', 'calendar::calendar');
@@ -53,6 +62,9 @@ $routes->post('guardaremployee', 'employee::guardaremployee');
 $routes->get('editaremployee/(:num)', 'employee::editaremployee/$1');
 $routes->get('altaemployee', 'employee::altaemployee');
 $routes->get('guardareditar', 'worklist::guardareditar');
+$routes->get('resetpassword/(:num)', 'employee::resetpassword/$1');
+
+
 
 $routes->post('salvarcancelado', 'worklist::salvarcancelado');
 
@@ -76,6 +88,8 @@ $routes->post('savepasswordemployee', 'savepasswordemployee::savepassword');
 $routes->get('contact', 'contact::contact');
 $routes->get('job', 'job::job');
 
+
+
 $routes->get('logout', 'Session::logout');
 
 
@@ -84,6 +98,9 @@ $routes->get('acceptjob/(:num)', 'job::acceptjob/$1');
 $routes->get('cleaningfinished/(:num)', 'job::cleanedup/$1');
 $routes->get('startjob/(:num)', 'job::startclean/$1');
 $routes->post('jobfinished', 'job::jobfinished');
+$routes->post('cargafotos', 'job::cargafotos');
+$routes->post('guardardescripcionfotos', 'job::guardardescripcionfotos');
+$routes->get('trabajosfinalizado', 'job::trabajosfinalizado');
 
 
 $routes->get('cleaningsupplyuser', 'cleaningsupplyuser::cleaningsupplyuser');

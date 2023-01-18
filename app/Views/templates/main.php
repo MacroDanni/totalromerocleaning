@@ -19,17 +19,11 @@
     <link rel="stylesheet" href="<?= base_url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') ?>">
-<!-- Resources -->
-<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-
-
+  <!-- the fileinput plugin styling CSS file -->
+<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="<?= base_url('lib/main.css') ?>">
 <link href="<?= base_url('lib/main.js') ?>">
-
-
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -103,6 +97,19 @@
           </li>
           
 
+          <li class="nav-item">
+            <a href="<?= base_url('calendarmanager') ?>" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-range" viewBox="0 0 16 16">
+  <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zM1 9h4a1 1 0 0 1 0 2H1V9z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg>
+              <p>
+              Calendario Manager
+              </p>
+            </a>
+            </li>
+
+
           <li class="nav-item menu-open">
             <a href="<?= base_url('worklist') ?>" class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-check" viewBox="0 0 16 16">
@@ -175,6 +182,55 @@
             </a>
             </li>
 
+            <hr>
+
+            <li class="nav-item">
+            <a href="<?= base_url('calendar') ?>" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-range" viewBox="0 0 16 16">
+  <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zM1 9h4a1 1 0 0 1 0 2H1V9z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg>
+              <p>
+              Calendario
+              </p>
+            </a>
+            </li>
+
+
+            <li class="nav-item menu-open">
+            <a href="<?= base_url('job') ?>" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-checks" viewBox="0 0 16 16">
+  <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708l-2 2zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708l-2 2zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+</svg>
+              <p>
+              Trabajos
+              </p>
+              <i class="right fas fa-angle-left"></i>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('job') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>En proceso
+                    
+                  </p>
+                </a>
+              </li>
+             
+          </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('trabajosfinalizado') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Finalizados
+                  </p>
+                </a>
+              </li>
+          </ul>
+            </li>
+
+          
 
             <li class="nav-item">
             <a href="<?= base_url('cleaningsupply') ?>" class="nav-link">
@@ -186,19 +242,6 @@
               </p>
             </a>
             </li>
-
-            <li class="nav-item">
-            <a href="<?= base_url('job') ?>" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-checks" viewBox="0 0 16 16">
-  <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708l-2 2zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708l-2 2zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-</svg>
-              <p>
-              Trabajos
-              </p>
-            </a>
-            </li>
-
-
 
             <li class="nav-item">
             <a href="<?= base_url('contact') ?>" class="nav-link">
@@ -215,7 +258,19 @@
 
   <?php } 
   elseif($session->tipo =='Empleado'){?>
-           
+              
+  <li class="nav-item">
+            <a href="<?= base_url('calendar') ?>" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-range" viewBox="0 0 16 16">
+  <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zM1 9h4a1 1 0 0 1 0 2H1V9z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg>
+              <p>
+              Calendario
+              </p>
+            </a>
+            </li>
+
   <li class="nav-item">
             <a href="<?= base_url('job') ?>" class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-checks" viewBox="0 0 16 16">
@@ -225,9 +280,10 @@
               Trabajos
               </p>
             </a>
-            </li>
-
+          
             
+            </li>
+ 
             <li class="nav-item">
             <a href="<?= base_url('cleaningsupplyuser') ?>" class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bucket" viewBox="0 0 16 16">
@@ -316,17 +372,28 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+
 <!-- Bootstrap 4 -->
-<script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('dist/js/adminlte.min.js') ?>"></script>
 <!-- jQuery Knob -->
 <script src="<?= base_url('plugins/jquery-knob/jquery.knob.min.js') ?>"></script>
 <!-- Sparkline -->
 <script src="<?= base_url('plugins/sparklines/sparkline.js') ?>"></script>
-
-
+ 
+<!-- the main fileinput plugin script JS file -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
+ 
+<!-- following theme script is needed to use the Font Awesome 5.x theme (`fa5`). Uncomment if needed. -->
+<!-- script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/themes/fa5/theme.min.js"></script -->
+ 
+<!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/locales/LANG.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script src="<?= base_url('plugins/moment/moment.min.js') ?>"></script>
 <script src="<?= base_url('plugins/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?= base_url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
@@ -341,12 +408,10 @@
 <script src="<?= base_url('plugins/datatables-buttons/js/buttons.print.min.js') ?>"></script>
 <script src="<?= base_url('plugins/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
 
-
-
+<script src='<?= base_url('dist/js/index.global.js') ?>'></script>
 
 <script>
   $(function () {
-
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": true, "searching": true,
       "buttons": ["copy", "excel", "pdf", "print"]
@@ -363,9 +428,11 @@
       "buttons": ["copy", "excel", "pdf", "print"],
       "order": [ 4, "desc" ]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
-  
 </script>
+
+
+
+
 
 
 </body>
