@@ -8,6 +8,13 @@ class Cleaningsupply extends BaseController
 
     public function cleaningsupply()
     {
+        
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $ProductModel = new \App\Models\ProductModel();
         $data['Product'] = $ProductModel->orderBy('nombre', 'DESC')->findAll();
         return view('cleaningsupply/cleaningsupply',$data);
@@ -16,6 +23,12 @@ class Cleaningsupply extends BaseController
 
 
         public function editcleaningsupply($id){
+            $session = \Config\Services::session();
+            if (!$session->id) {
+                
+            $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+            return redirect()->to('/');
+            }
             $ProductModel = new \App\Models\ProductModel();
             $data['cleaningsupply'] = $ProductModel->where('id', $id)->first();
             return view('cleaningsupply/newcleaningsupply',$data);
@@ -23,12 +36,24 @@ class Cleaningsupply extends BaseController
         }
 
         public function newcleaningsupply(){
+            $session = \Config\Services::session();
+            if (!$session->id) {
+                
+            $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+            return redirect()->to('/');
+            }
             
             return view('cleaningsupply/newcleaningsupply');
         }
 
 
         public function savecleaningsupply(){
+            $session = \Config\Services::session();
+            if (!$session->id) {
+                
+            $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+            return redirect()->to('/');
+            }
             $ProductModel = new \App\Models\ProductModel();
             $datos = [
                 'nombre' => $this->request->getPost('nombre'),
@@ -42,6 +67,12 @@ class Cleaningsupply extends BaseController
 
         
         public function saveedit($id){
+            $session = \Config\Services::session();
+            if (!$session->id) {
+                
+            $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+            return redirect()->to('/');
+            }
             $ProductModel = new \App\Models\ProductModel();
             $datos = [
                 'tipo'=>  $this->request->getPost('tipo'),

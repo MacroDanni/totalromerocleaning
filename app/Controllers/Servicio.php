@@ -8,6 +8,12 @@ class Servicio extends BaseController
 
   public function servicios()
   {
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
     $ServiciosModel = new \App\Models\ServiciosModel();
     $data['servicios'] = $ServiciosModel->orderBy('name', 'ASC')->findAll();
 
@@ -22,6 +28,12 @@ class Servicio extends BaseController
 
   public function nuevoservicio()
   {
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
 
     $ServiciosModel = new \App\Models\ServiciosModel();
 
@@ -42,6 +54,12 @@ class Servicio extends BaseController
 
   public function editarservicio($id)
   {
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
     $ServiciosModel = new \App\Models\ServiciosModel();
     $data['servicio'] = $ServiciosModel->where('id', $id)->first();
 
@@ -52,6 +70,12 @@ class Servicio extends BaseController
 
   public function guardareditarservicio()
   {
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
     $ServiciosModel = new \App\Models\ServiciosModel();
     $id = $this->request->getPost('id');
     $dato = [
@@ -83,6 +107,12 @@ class Servicio extends BaseController
   }
   public function eliminarserviciotemp($id)
   {
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
     $ServiciosModel = new \App\Models\ServiciosModel();
     $data['servicio'] = $ServiciosModel->where('id', $id)->first();
 
@@ -91,6 +121,12 @@ class Servicio extends BaseController
   }
   public function eliminarservicio($id)
   {
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
     $ServiciosModel = new \App\Models\ServiciosModel();
     $resultado = $ServiciosModel->delete(['id' => $id]);
 

@@ -4,13 +4,15 @@ namespace App\Controllers;
 
 class Calendar extends BaseController
 {
-    public function calendar()
-
-    {$session = \Config\Services::session();
-
-        if(!$session){
-            return redirect()->to('/');
+    public function calendar(){
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
         }
+
+  
 
         $WorklistModel = new \App\Models\WorklistModel();
         $EmployeeModel = new \App\Models\EmployeeModel();
@@ -67,7 +69,13 @@ class Calendar extends BaseController
     public function calendarmanager()
 
     {
-        $session = \Config\Services::session();
+        
+    $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
 
         if(!$session){
             return redirect()->to('/');

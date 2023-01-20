@@ -10,6 +10,11 @@ class Job extends BaseController
   public function job()
   {
     $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
     $WorklistModel = new \App\Models\WorklistModel();
     $OrdenworklistModel = new \App\Models\OrdenworklistModel();
     $session = session();
@@ -30,6 +35,11 @@ class Job extends BaseController
   public function acceptjob($id)
   {
     $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
     $WorklistModel = new \App\Models\WorklistModel();
 
     $resultado = $WorklistModel->update($id, [
@@ -84,6 +94,12 @@ class Job extends BaseController
 
   public function canceljob($id)
   {
+    $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
     $WorklistModel = new \App\Models\WorklistModel();
     $datos = [
       'status' => "4",
@@ -130,6 +146,12 @@ class Job extends BaseController
   public function startclean($id)
   {
 
+    $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
     $WorklistModel = new \App\Models\WorklistModel();
     $datos = [
       'status' => "2",
@@ -145,6 +167,12 @@ class Job extends BaseController
 
   public function cleanedup($id)
   {
+    $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
     $WorklistModel = new \App\Models\WorklistModel();
 
     $data['cleanedup'] = $WorklistModel->where('id', $id)->first();
@@ -155,6 +183,12 @@ class Job extends BaseController
 
   public function cargafotos()
   {
+    $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
 
     $WorklistModel = new \App\Models\WorklistModel();
     $FotosModel = new \App\Models\FotosModel();
@@ -206,6 +240,12 @@ class Job extends BaseController
 
   public function guardardescripcionfotos()
   {
+    $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
     $FotosModel = new \App\Models\FotosModel();
     $OrdenworklistModel = new \App\Models\OrdenworklistModel();
     $WorklistModel = new \App\Models\WorklistModel();
@@ -302,6 +342,12 @@ class Job extends BaseController
 
   public function fotosantes($id)
   {
+    $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
     $WorklistModel = new \App\Models\WorklistModel();
     $data['cleanedup'] = $WorklistModel->where('id', $id)->first();
 
@@ -311,6 +357,12 @@ class Job extends BaseController
   public function guardarfotosantes()
   {
     $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
+ 
     $WorklistimagenesantesModel = new \App\Models\WorklistimagenesantesModel();
     $id = $this->request->getPost('id');
 
@@ -339,6 +391,12 @@ class Job extends BaseController
   public function trabajosfinalizado()
   {
 
+    $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
     $WorklistModel = new \App\Models\WorklistModel();
     $EmployeeModel = new \App\Models\EmployeeModel();
     $session = \Config\Services::session();

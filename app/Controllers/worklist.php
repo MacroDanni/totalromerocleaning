@@ -7,19 +7,30 @@ class Worklist extends BaseController
 
     public function worklist()
     {
-
-
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
 
         $WorklistModel = new \App\Models\WorklistModel();
         $EmployeeModel = new \App\Models\EmployeeModel();
         $data['worklist'] = $WorklistModel->where('status !=', '3')->orderBy('registrationdate', 'ASC')->findAll();
         $data['employee'] = $EmployeeModel->find($this->request->getPost('employee'));
+        
         return view('worklist/work', $data);
     }
 
     public function guardareditar()
     {
 
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $ServiciosModel = new \App\Models\ServiciosModel();
         $BuildingModel = new \App\Models\BuildingModel();
         $BusinessModel = new \App\Models\BusinessModel();
@@ -40,6 +51,12 @@ class Worklist extends BaseController
     public function salvarcancelado()
     {
 
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $WorklistModel = new \App\Models\WorklistModel();
         $EmployeeModel = new \App\Models\EmployeeModel();
 
@@ -64,7 +81,7 @@ class Worklist extends BaseController
             $message = '
             <br>Detalles del servicio:<BR>Edificio: ******** <br>Servicio: ' . $datosworklist['nameservice'] . '<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha del Servicio: ' . $datosworklist['fechaAseo'] . '<br> Descripcion: ' . $datosworklist['description'] . '<br>
             <br>
-            <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
+            <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
               ';
 
             $email = \Config\Services::email();
@@ -97,6 +114,12 @@ class Worklist extends BaseController
     public function saveWorklist()
     {
 
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $EmployeeModel = new \App\Models\EmployeeModel();
         $WorklistModel = new \App\Models\WorklistModel();
 
@@ -137,7 +160,7 @@ class Worklist extends BaseController
                     $message = '
                     <br>Detail Service:<BR>Edificio: ******** <br>Servicio: ' . $this->request->getPost('service') . '<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha de Servicio: ' . $this->request->getPost('date') . '<br> Descripcion: ' . $this->request->getPost('description') . '<br>
                     <br>
-                    <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
+                    <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
                       ';
     
                     $email = \Config\Services::email();
@@ -177,7 +200,7 @@ class Worklist extends BaseController
         $message = '
         <br>Detail Service:<BR>Edificio: ******** <br>Servicio: ' . $this->request->getPost('service') . '<br># Edificio: ********* <br># Habitacion: ********* <br>Fecha de Servicio: ' . $this->request->getPost('date') . '<br> Descripcion: ' . $this->request->getPost('description') . '<br>
         <br>
-        <p><a href="http://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
+        <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
           ';
 
         $email = \Config\Services::email();
@@ -207,6 +230,12 @@ class Worklist extends BaseController
 
     public function worklistfinalizados()
     {
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $WorklistModel = new \App\Models\WorklistModel();
         $EmployeeModel = new \App\Models\EmployeeModel();
         $session = \Config\Services::session();
@@ -220,6 +249,12 @@ class Worklist extends BaseController
 
     public function eliminartemp($id)
     {
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $WorklistModel = new \App\Models\WorklistModel();
         $data['worklist'] = $WorklistModel->where('id', $id)->first();
 
@@ -228,7 +263,12 @@ class Worklist extends BaseController
 
     public function eliminarworklist($id)
     {
-
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $WorklistModel = new \App\Models\WorklistModel();
         $data['worklist'] = $WorklistModel->where('id', $id)->first();
         $resultado = $WorklistModel->delete(['id' => $id]);
@@ -246,7 +286,13 @@ class Worklist extends BaseController
 
     public function verfotos()
     {
-
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
+        
         $WorklistModel = new \App\Models\WorklistModel();
         $FotosModel = new \App\Models\FotosModel();
         $session = \Config\Services::session();

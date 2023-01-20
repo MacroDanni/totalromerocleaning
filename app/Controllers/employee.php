@@ -7,6 +7,12 @@ class employee extends BaseController
 {
     public function employee()
     {
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $EmployeeModel = new \App\Models\EmployeeModel();
         $data['employee'] = $EmployeeModel->orderBy('fechaIngreso', 'DESC')->findAll();
      
@@ -18,6 +24,13 @@ class employee extends BaseController
 
 
     public function guardaremployee(){
+
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
 
         if ($this->request->getMethod() == 'post') {
             $EmployeeModel = new \App\Models\EmployeeModel();
@@ -95,6 +108,12 @@ class employee extends BaseController
     public function editaremployee($id)
     {
 
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $EmployeeModel = new \App\Models\EmployeeModel();
         $data['employee'] = $EmployeeModel->where('id', $id)->first();
 
@@ -105,6 +124,12 @@ class employee extends BaseController
         
     public function altaemployee(){
 
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         return view('employee/guardareditar');
 
     }

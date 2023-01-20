@@ -7,6 +7,12 @@ class building extends BaseController
     public function building()
     {
 
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         $BuildingModel = new \App\Models\BuildingModel();
         $data['building'] = $BuildingModel->orderBy('property', 'DESC')->findAll();
 
@@ -17,6 +23,12 @@ class building extends BaseController
 
     public function guardareditar(){
 
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         return view('building/guardareditar');
 
     }
@@ -24,6 +36,12 @@ class building extends BaseController
 
     public function savebuilding(){
 
+        $session = \Config\Services::session();
+        if (!$session->id) {
+            
+        $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+        return redirect()->to('/');
+        }
         if ($this->request->getMethod() == 'post') {
 
             $BuildingModel = new \App\Models\BuildingModel();
@@ -53,6 +71,12 @@ class building extends BaseController
 
     public function editarbuilding($id){
         
+    $session = \Config\Services::session();
+    if (!$session->id) {
+        
+    $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
+    return redirect()->to('/');
+    }
         $BuildingModel = new \App\Models\BuildingModel();
         $data['building'] = $BuildingModel->where('id', $id)->first();
 

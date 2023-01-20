@@ -11,6 +11,7 @@ class Session extends BaseController
 
         if ($this->request->getMethod() == 'post') {
 
+        $session = session()->startSession;
         $session = session();
         $session->set([]);
         $EmployeeModel = new \App\Models\EmployeeModel();
@@ -93,18 +94,8 @@ class Session extends BaseController
     }
 
     public function logout(){
-        $session = session();
-        $session_data = [
-            'id' => "",
-            'nikename' => "",
-            'name' => "",
-            'apellidoPaterno' => "",
-            'apellidoMaterno' => "",
-            'correoElectronico' => "",
-            'isLoggedIn' => FALSE
-        ];
-         
-        $session->set($session_data);
+        session_destroy();
+        session()->destroy;
 
         $this->session->setFlashdata('flag', ['type' => 'primary', 'msg' => "Log Out Success"]);
         return redirect()->to('/');
