@@ -35,8 +35,8 @@ Lista de trabajo
                   <tr>
                     <th>#</th>
                     <th>Edificio</th>
-                    <th># Edificio</th>
-                    <th># Habitación</th>
+                    <th>Edificio-Habitación</th>
+                   
                     <th>Fecha</th>
                     <th>Asignado a</th>
                     <th>Servicio</th>
@@ -54,8 +54,8 @@ Lista de trabajo
                     <td><?=$worklist['nameBuilding']; ?>
                  
                   </td>
-                    <td><?php if($worklist['numberBuilding']==6){echo 'All';} else{ echo $worklist['numberBuilding'];} ?></td>
-                    <td><?=$worklist['numroom'] ?></td>
+                    <td><?= $worklist['numberBuilding'].'-'.$worklist['numroom'] ?></td>
+                   
                     <td><?=date("m/d/Y", strtotime($worklist['fechaAseo'])) ?></td>
                     <td>
                     

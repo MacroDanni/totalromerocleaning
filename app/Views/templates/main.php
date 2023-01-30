@@ -202,7 +202,27 @@
               <p>
               Suministros
               </p>
+              <i class="right fas fa-angle-left"></i>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('cleaningsupply') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Catalogo</p>
+                </a>
+              </li>
+             
+          </ul>
+
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('catalogoa') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Solicitudes</p>
+                </a>
+              </li>
+             
+          </ul>
             </li>
 
 
@@ -436,13 +456,22 @@
       "responsive": true, "lengthChange": false, "autoWidth": true, "searching": true,
       "order": [ 2, "desc" ]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+    $("#example3").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": true, "searching": true,
+      "order": [ 3, "asc" ]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+
+    $("#example9").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": true, "searching": true,
+      "order": [ 1, "desc" ]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
   });
 
-  $("#example3").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": true, "searching": true,
-      "buttons": ["copy", "excel", "pdf", "print"],
-      "order": [ 4, "desc" ]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+ 
+  
 
   
 </script>

@@ -26,7 +26,7 @@ Cargar fotos del antes
 
 <?= $this->section('content') ?>
 
-<?= csrf_field() ?>
+
 
 <?php
 date_default_timezone_set('America/Chicago');
@@ -39,7 +39,7 @@ $minutos = floor($minutos);
 
 
 <form method="POST" action="<?= base_url('cargafotos') ?>" enctype="multipart/form-data" class="row g-3">
-
+<?= csrf_field() ?>
     <div class="card-body">
 
        

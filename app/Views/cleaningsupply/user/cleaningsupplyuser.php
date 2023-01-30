@@ -53,11 +53,13 @@ Lista de Suministros
                     <td><?=$cleaningsupply['nickname'] ?></td>
                     <td>
                         <?php 
-                        if($cleaningsupply['estatus']==1){ 
+                        if($cleaningsupply['estatus']==0){ 
                             echo '<button type="button" class="btn btn-primary btn-sm">Enviado</button>';
                         }
-                            elseif($cleaningsupply['estatus']==2){
-                                echo '<button type="button" class="btn btn-primary btn-sm">En Proceso</button>';
+                            elseif($cleaningsupply['estatus']==1){
+                               ?>
+                               <a href="<?= base_url('recibidouser/'.$cleaningsupply['id']); ?>" class="btn btn-success btn-sm">Recibir producto</a>
+                               <?php
                             }
                             else{
                                echo  '';

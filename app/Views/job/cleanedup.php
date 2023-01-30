@@ -28,7 +28,7 @@ Trabajo Finalizado
 
 
 
-<?= csrf_field() ?>
+
 
 <?php
 date_default_timezone_set('America/Chicago');
@@ -42,16 +42,10 @@ $minutos = floor($minutos);
 ?>
 
 
-<form method="POST" action="<?= base_url('cargafotos') ?>" enctype="multipart/form-data" class="row g-3">
-
+<form method="POST" action="<?= base_url('jobfinished') ?>" enctype="multipart/form-data" class="row g-3">
+<?= csrf_field() ?>
     <div class="card-body">
-
-
-
-
         <div class="d-grid gap-2 col-6 mx-auto">
-
-          
         <div class="row">
 
             <?php if ($minutos >= 180 || getenv('CI_ENVIRONMENT') == 'development') { ?>

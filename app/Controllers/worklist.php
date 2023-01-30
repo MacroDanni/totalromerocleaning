@@ -16,7 +16,7 @@ class Worklist extends BaseController
 
         $WorklistModel = new \App\Models\WorklistModel();
         $EmployeeModel = new \App\Models\EmployeeModel();
-        $data['worklist'] = $WorklistModel->where('status !=', '3')->orderBy('registrationdate', 'ASC')->findAll();
+        $data['worklist'] = $WorklistModel->where('status !=', '3')->findAll();
         $data['employee'] = $EmployeeModel->find($this->request->getPost('employee'));
         
         return view('worklist/work', $data);
@@ -120,14 +120,27 @@ class Worklist extends BaseController
         $this->session->setFlashdata('flag', ['type' => 'info', 'msg' => 'Tiempo de sesion expirado']);
         return redirect()->to('/');
         }
+
         $EmployeeModel = new \App\Models\EmployeeModel();
         $WorklistModel = new \App\Models\WorklistModel();
-
-
         $fechadesde = strtotime($this->request->getPost('fechadesde'));
         $fechahasta = strtotime($this->request->getPost('fechahasta'));
+        $validation = \Config\Services::validation();
+        /*
+        $validation->setRules([
+            'building'=>'required|is_not_unique[BuildingModel.id]',
+            'employee'=>'required',
+            'service'=>'required',
+            'numberBuilding'=>'required',
+            'property'=>'required',
+            'fechadesde'=>'required',
+        ]);
+        $validation->withRequest($this->request)->run();
+        dd($validation->getErrors());
 
-        
+        print('paso');
+        die();
+*/
         if ($fechadesde > 0 && $fechahasta > 0) {
          
             $dia = 86400;

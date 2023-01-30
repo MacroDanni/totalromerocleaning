@@ -31,12 +31,11 @@ class Autoload extends AutoloadConfig
      * else you will need to modify all of those classes for this to work.
      *
      * Prototype:
-     *```
+     *
      *   $psr4 = [
      *       'CodeIgniter' => SYSTEMPATH,
      *       'App'	       => APPPATH
      *   ];
-     *```
      *
      * @var array<string, string>
      */

@@ -167,6 +167,7 @@ class Job extends BaseController
 
   public function cleanedup($id)
   {
+ 
     $session = \Config\Services::session();
     if (!$session->id) {
         
@@ -176,6 +177,7 @@ class Job extends BaseController
     $WorklistModel = new \App\Models\WorklistModel();
 
     $data['cleanedup'] = $WorklistModel->where('id', $id)->first();
+
 
     return view('job/cleanedup', $data);
   }

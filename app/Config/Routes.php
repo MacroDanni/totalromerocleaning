@@ -99,6 +99,8 @@ $routes->get('cleaningfinished/(:num)', 'job::cleanedup/$1');
 $routes->get('startjob/(:num)', 'job::startclean/$1');
 $routes->post('jobfinished', 'job::jobfinished');
 $routes->post('cargafotos', 'job::cargafotos');
+
+$routes->post('cargafotosfinalizar', 'job::cargafotosfinalizar');
 $routes->post('guardardescripcionfotos', 'job::guardardescripcionfotos');
 $routes->get('trabajosfinalizado', 'job::trabajosfinalizado');
 
@@ -106,24 +108,28 @@ $routes->get('trabajosfinalizado', 'job::trabajosfinalizado');
 $routes->get('cleaningsupplyuser', 'cleaningsupplyuser::cleaningsupplyuser');
 $routes->get('newcleaningsupplyuser', 'cleaningsupplyuser::newcleaningsupplyuser');
 $routes->post('savecleaningsupply', 'cleaningsupply::savecleaningsupply');
+$routes->get('catalogoa', 'cleaningsupply::catalogoa');
+$routes->get('recibidouser', 'cleaningsupplyuser::recibidouser');
+
 
 
 
 $routes->post('solicitando', 'cleaningsupplyuser::solicitando');
 $routes->get('cleaningsupply', 'cleaningsupply::cleaningsupply');
-$routes->get('newcleaningsupply', 'cleaningsupply::newcleaningsupply');
 $routes->get('editcleaningsupply/(:num)', 'cleaningsupply::editcleaningsupply/$1');
 $routes->post('saveedit/(:num)', 'cleaningsupply::saveedit/$1');
-
+$routes->get('aceptarsuministro/(:num)', 'cleaningsupply::aceptarsuministro/$1');
+$routes->get('declinarsuministro/(:num)', 'cleaningsupply::declinarsuministro/$1');
 /* Modulo de servicios*/
 
-$routes->get('servicios','servicio::servicios');
+$routes->get('servicios','Servicio::servicios');
 $routes->get('crearservicio','servicio::crearservicio');
 $routes->get('editarservicio/(:num)','servicio::editarservicio/$1');
 $routes->post('guardareditarservicio','servicio::guardareditarservicio');
 $routes->post('nuevoservicio','servicio::nuevoservicio');
 $routes->get('eliminarserviciotemp/(:num)','servicio::eliminarserviciotemp/$1');
 $routes->get('eliminarservicio/(:num)','servicio::eliminarservicio/$1');
+
 
 
 /*
