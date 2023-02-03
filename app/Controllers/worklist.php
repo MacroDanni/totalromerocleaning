@@ -126,7 +126,7 @@ class Worklist extends BaseController
         $fechadesde = strtotime($this->request->getPost('fechadesde'));
         $fechahasta = strtotime($this->request->getPost('fechahasta'));
         $validation = \Config\Services::validation();
-        /*
+   /*
         $validation->setRules([
             'building'=>'required|is_not_unique[BuildingModel.id]',
             'employee'=>'required',
@@ -163,10 +163,12 @@ class Worklist extends BaseController
                     'numberBuilding' => $this->request->getPost('numberBuilding'),
                     'status' => "0",
                 ]);
+
                 if ($resultado == 0) {
                     $this->session->setFlashdata('flag', ['type' => 'danger', 'msg' => 'Error de conexion al servidor, revise que fechas se cargaron y vuelva a cargar porfavor.']);
                     return redirect()->to('worklist');
                 }
+
                     $datos = $EmployeeModel->where('nickename', $this->request->getPost('employee'))->first();
                     $to = $datos['correoElectronico'];
                     $subject = "Nuevo Servicio: " . $this->request->getPost('service');
@@ -175,7 +177,7 @@ class Worklist extends BaseController
                     <br>
                     <p><a href="https://totalromeroscleaning.com/" class="btn btn-outline-warning">Iniciar sesión - TotalRomeroCleaning</a></p>
                       ';
-    
+
                     $email = \Config\Services::email();
                     $email->setTo($to);
                     $email->setFrom('notification@totalromeroscleaning.com', 'Notification - TotalRomerosCleaning');

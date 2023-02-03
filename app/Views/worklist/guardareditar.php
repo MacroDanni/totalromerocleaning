@@ -96,7 +96,8 @@ Registrar nuevo trabajo
         <textarea name="description" class="form-control" id="description" placeholder="Descripción"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
+    <button type="submit" id="boton" class="btn btn-success">Guardar</button>
 </form>
+
 
 <?= $this->endSection() ?>
