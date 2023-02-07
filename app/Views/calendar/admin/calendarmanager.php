@@ -33,10 +33,12 @@ Calendario Manager
       themeSystem: 'bootstrap5',
       initialDate: '<?=  date('Y-m-d');?>',
       initialView: 'listWeek',
-      dayMaxEventRows: true,
+      dayMaxEventRows: false,
       
       headerToolbar: {
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+        left: 'prev,next today',
+        center: 'title',
       },
       height: 'auto',
       navLinks: true, // can click day/week names to navigate views

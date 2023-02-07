@@ -63,7 +63,7 @@ $routes->get('editaremployee/(:num)', 'employee::editaremployee/$1');
 $routes->get('altaemployee', 'employee::altaemployee');
 $routes->get('guardareditar', 'worklist::guardareditar');
 $routes->get('resetpassword/(:num)', 'employee::resetpassword/$1');
-
+$routes->get('concentradoempleado/(:any)', 'employee::concentradoempleado/$1');
 
 
 $routes->post('salvarcancelado', 'worklist::salvarcancelado');

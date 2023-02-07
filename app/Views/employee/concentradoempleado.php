@@ -58,39 +58,8 @@ Lista de trabajo
                    
                     <td><?=date("m/d/Y", strtotime($worklist['fechaAseo'])) ?></td>
                     <td>
-                    
-                
-                                      <input type="hidden" name="idworklist" value="<?=$worklist['id'] ?>">
-               
-                  <?php
-                    if($worklist['status']==4){
-                      ?>
-                     <form method="POST" action="<?= base_url('salvarcancelado'); ?>" class="row g-3">
-                  <?= csrf_field()?> 
-                                      <input type="hidden" name="id" value="<?=$worklist['id'] ?>">
-                                            <div class="col-md-12">
-                                                        <select class="form-select" name="nickename" required aria-label="Default select example">
-                                                          <option selected>Selecciona Empleado</option>
-                                                        <?php if ($employee) :?>
-                                                                        <?php foreach($employee as $employee): ?>
-                                                                          <option value="<?= $employee['nickename'] ?>"> <?=$employee['nombre'].' '.$employee['apellidoPaterno'].' '.$employee['apellidoMaterno'] ?></option>
-                                                                <?php endforeach ?>
-                                                                <?php endif ?>
-                                                </select>
-                                                </div>
-                                               
-                                                <button type="submit" class="btn btn-success btn-sm">Guardar</button>
-                          </form>
-                   
-                      <?php
-                     
-                    }
-                    else{
-                       ?>
-                        <a href="<?=base_url('concentradoempleado/'.$worklist['nameEmployee'])?>"><?=$worklist['nameEmployee']?></a>
-                       <?php
-                                          }
-                    ?>
+                 <?=$worklist['nameEmployee']?>
+                 
                   </td>
                   
                   <td><?=$worklist['nameservice'] ?></td>

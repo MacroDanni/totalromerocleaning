@@ -477,6 +477,7 @@
     <script src="<?= base_url('plugins/datatables/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= base_url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
     <script src="<?= base_url('plugins/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="<?= base_url('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') ?>"></script>
     <script src="<?= base_url('plugins/datatables-buttons/js/dataTables.buttons.min.js') ?>"></script>
     <script src="<?= base_url('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') ?>"></script>
@@ -486,7 +487,6 @@
     <script src="<?= base_url('plugins/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
     <script src="<?= base_url('plugins/datatables-buttons/js/buttons.print.min.js') ?>"></script>
     <script src="<?= base_url('plugins/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
     <script src='<?= base_url('dist/js/index.global.js') ?>'></script>
 
@@ -558,20 +558,20 @@
 
 
         
-        const myButton = document.getElementById('boton')
+    /*    const myButton = document.getElementById('boton')
         myButton.addEventListener('click', function() {
             myButton.disabled = true;
             myButton.style.opacity = 0.7;
             myButton.textContent = 'Ejecutando proceso...';
-
+/*
             //simulación de espera para ejecución de un proceso
-          /*  setTimeout(function() {
+          setTimeout(function() {
                 myButton.textContent = 'Guardar';
                 myButton.style.opacity = 1;
                 myButton.disabled = false;
             }, 5000);
             */
-        });
+    //    });
 
 
     });
